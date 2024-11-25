@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Signup</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+    <script src="app/app.js"></script>
+    <script src="app/controllers/signupController.js"></script>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Roboto', sans-serif;
+            background: linear-gradient(to right, #ece9e6, #ffffff);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+        .container {
+            width: 100%;
+            max-width: 400px;
+            padding: 30px;
+            background: #ffffff;
+            border-radius: 15px;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+            text-align: center;
+        }
+        .container h1 {
+            font-size: 2rem;
+            margin-bottom: 20px;
+            color: #1d4ed8;
+        }
+        .container input {
+            width: 90%;
+            padding: 10px 15px;
+            margin-bottom: 15px;
+            font-size: 1rem;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            transition: all 0.3s ease-in-out;
+        }
+        .container input:focus {
+            border-color: #1d4ed8;
+            outline: none;
+            box-shadow: 0 0 8px rgba(29, 78, 216, 0.2);
+        }
+        .container button {
+            width: 98%;
+            padding: 10px 15px;
+            font-size: 1rem;
+            color: #fff;
+            background-color: #1d4ed8;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background-color 0.3s ease-in-out;
+        }
+        .container button:hover {
+            background-color: #2563eb;
+        }
+        .container a {
+            color: #1d4ed8;
+            text-decoration: none;
+            font-size: 0.9rem;
+        }
+        .container a:hover {
+            text-decoration: underline;
+        }
+        .message {
+            color: red;
+            font-size: 0.9rem;
+        }
+    </style>
+</head>
+<body ng-app="loginApp">
+    <div class="container" ng-controller="SignupController">
+        <h1>Signup</h1>
+        <form ng-submit="signup()">
+            <input type="text" ng-model="user.username" placeholder="Username" required>
+            <input type="email" ng-model="user.email" placeholder="Email" required>
+            <input type="password" ng-model="user.password" placeholder="Password" required>
+            <button type="submit">Signup</button>
+        </form>
+        <p class="message">{{ message }}</p>
+        <p>
+            Already have an account? 
+            <a href="login.html">Login here!</a>
+        </p>
+    </div>
+</body>
+</html>
