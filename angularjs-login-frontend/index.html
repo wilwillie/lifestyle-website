@@ -1,54 +1,106 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" ng-app="fashionPediaApp">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Lifestyle Pedia</title>
-    <style>
-        body {
-            margin: 0;
-            padding: 0;
-            font-family: Arial, sans-serif;
-            background: linear-gradient(to bottom, #f0f8ff, #dbefff);
-            text-align: center;
-            color: #333;
-        }
-        .container {
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-        }
-        .hero {
-            font-size: 2.5rem;
-            margin-bottom: 1rem;
-        }
-        .subtitle {
-            font-size: 1.2rem;
-            margin-bottom: 2rem;
-            color: #666;
-        }
-        .btn {
-            padding: 10px 20px;
-            font-size: 1rem;
-            color: #fff;
-            background-color: #007bff;
-            border: none;
-            border-radius: 5px;
-            text-decoration: none;
-            cursor: pointer;
-        }
-        .btn:hover {
-            background-color: #0056b3;
-        }
-    </style>
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+    <title>FASHION PEDIA</title>
 </head>
-<body>
-    <div class="container">
-        <h1 class="hero">Welcome to Lifestyle Pedia</h1>
-        <p class="subtitle">Discover the latest trends and find your style!</p>
-        <a href="login.html" class="btn">Login to Explore</a>
+<body ng-controller="MainController">
+    <!-- Video Section -->
+    <div class="video-container">
+        <video autoplay muted loop class="background-video">
+            <source src="assets/videos/fashion.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+        <div class="overlay-content">
+            <h1 class="video-title">Welcome to <i>WILENCE</i></h1>
+            <a href="login.html"><button class="get-started-button" ng-click="navigateToLogin()">Get Started</button></a>
+        </div>
     </div>
+
+    <!-- Header -->
+    <header class="header hidden" id="main-header">
+        <div class="logo-darkmode-container">
+            <div class="logo">
+                <a href="/" ng-click="navigate('/')">FASHION PEDIA</a>
+            </div>
+            <div class="dark-mode-toggle">
+                <span id="toggleDarkMode" class="icon-moon" ng-click="toggleDarkMode()">
+                    {{ isDarkMode ? '☀️' : '🌙' }}
+                </span>
+            </div>
+        </div>
+        <nav class="nav">
+            <ul>
+                <li><a href="#home" ng-click="navigate('#home')">Home</a></li>
+                <li class="fp-dropdown">
+                    <a href="#category" ng-click="toggleDropdown($event)">Category</a>
+                    <ul class="fp-dropdown-menu" ng-show="isDropdownVisible">
+                      <li><a href="#category/men" ng-click="navigate('#category/men')">Men</a></li>
+                      <li><a href="#category/women" ng-click="navigate('#category/women')">Women</a></li>
+                    </ul>
+                  </li>                                                                    
+                <li><a href="#tentang" ng-click="navigate('#tentang')">Tentang</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Content -->
+    <div id="afterlogin" class="slider-container">
+        <div class="slider">
+            <div class="slide" ng-repeat="slide in slides">
+                <a ng-href="{{slide.link}}">
+                    <img ng-src="{{slide.image}}" alt="{{slide.alt}}">
+                </a>
+            </div>
+        </div>
+        <button class="nav-button left" ng-click="prevSlide()"></button>
+        <button class="nav-button right" ng-click="nextSlide()"></button>
+    </div>    
+
+    <div id="motto" class="motto-container">
+        <p class="motto">{{ motto }}</p>
+    </div>
+
+    <div class="desc-container">
+        <p class="desc" ng-bind-html="desc"></p>
+    </div>
+
+    <div id="sex" class="buku-container">
+        <h2 class="buku-title">Buku Pakaian</h2>
+    </div>
+
+    <div class="cards-container">
+        <a ng-repeat="category in categories" ng-href="{{category.link}}">
+            <div class="card">
+                <div class="wrapper">
+                    <img ng-src="{{category.image}}" class="cover-image" />
+                </div>
+                <div class="card-title">{{ category.title }}</div>
+            </div>
+        </a>
+    </div>
+
+    <div id="tentang" class="desc-container">
+        <p class="desc" ng-bind-html="about">{{ about }}</p>
+    </div>
+
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="social-links">
+                <a ng-repeat="social in socialLinks" ng-href="{{social.link}}" class="social-icon">
+                    <img ng-src="{{social.icon}}" alt="{{social.alt}}" width="24" height="24" />
+                </a>
+            </div>
+            <p>&copy; 2024 FASHION PEDIA. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular-sanitize.js"></script>
+    <script src="app/app.js"></script>
+    <script src="app/controllers/mainController.js"></script>
 </body>
 </html>

@@ -1,10 +1,11 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" ng-app="fashionPediaApp">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login</title>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular-sanitize.min.js"></script>
     <script src="app/app.js"></script>
     <script src="app/controllers/loginController.js"></script>
     <style>
@@ -12,7 +13,8 @@
             margin: 0;
             padding: 0;
             font-family: 'Roboto', sans-serif;
-            background: linear-gradient(to right, #ece9e6, #ffffff);
+            background: url(assets/images/login.jpg) no-repeat center center fixed;
+            background-size: cover;
             display: flex;
             justify-content: center;
             align-items: center;
@@ -70,11 +72,12 @@
         .container a:hover {
             text-decoration: underline;
         }
-        .message {
-            color: red;
-            font-size: 0.9rem;
+        .message.success {
+            color: green; /* Warna hijau untuk pesan sukses */
         }
-    </style>
+        .message.error {
+            color: red; /* Warna merah untuk pesan error */
+        }    </style>
 </head>
 <body ng-app="loginApp">
     <div class="container" ng-controller="LoginController">
@@ -85,7 +88,7 @@
             <button type="submit">Login</button>
         </form>
         <!-- Pesan validasi -->
-        <p style="color: red;">{{ message }}</p>
+        <p class="message" ng-class="messageClass" ng-if="message">{{ message }}</p>
         <p>
             <a href="forgot-password.html">Forgot Password?</a>
         </p>

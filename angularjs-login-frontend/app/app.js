@@ -1,1 +1,1 @@
-angular.module('loginApp', []);
+var app = angular.module('fashionPediaApp', ['ngSanitize']);
