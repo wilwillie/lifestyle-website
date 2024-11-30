@@ -138,7 +138,11 @@ router.post('/forgot-password', async (req, res) => {
         res.status(200).json({ message: 'Reset link sent to your email.' });
     } catch (err) {
         console.error('Error in forgot password:', err.message);
-        res.status(500).json({ message: 'An error occurred.', error: err.message });
+        res.status(500).json({
+            message: 'An error occurred.',
+            error: err.message,
+            stack: err.stack // Tambahkan ini untuk debug lebih detail
+        });        
     }
 });
 

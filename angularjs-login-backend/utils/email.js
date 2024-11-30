@@ -11,7 +11,9 @@ const sendVerificationEmail = async (to, token) => {
                 user: process.env.GMAIL_USER,
                 pass: process.env.GMAIL_PASS,
             },
-        });
+            debug: true, // Tambahkan debug
+            logger: true, // Tambahkan logger
+        });        
 
         console.log('Transporter configured successfully.');
 
