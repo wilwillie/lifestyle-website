@@ -2,19 +2,30 @@ app.controller('MainController', ['$scope', '$window', '$interval', '$document',
     $scope.isDropdownVisible = false;
 
     $scope.toggleDropdown = function ($event) {
-        $event.stopPropagation();
+        $event.stopPropagation(); // Mencegah klik menyebar ke elemen lain
         $scope.isDropdownVisible = !$scope.isDropdownVisible;
         console.log("Dropdown state:", $scope.isDropdownVisible);
-    };   
-
-    // Tutup dropdown saat klik di luar elemen dropdown
-    $document.on('click', function(event) {
-        if (!event.target.closest('.fp-dropdown')) {
-            $scope.$apply(function() {
+    };
+    
+    // Tutup dropdown jika klik di luar elemen dropdown
+    angular.element($document).on('click', function (event) {
+        const isClickInsideDropdown = event.target.closest('.fp-dropdown');
+        if (!isClickInsideDropdown) {
+            $scope.$apply(function () {
                 $scope.isDropdownVisible = false;
             });
         }
-    }); 
+    });
+
+    // Tambahkan event listener untuk scroll
+    angular.element($window).on('scroll', function () {
+        if ($scope.isDropdownVisible) {
+            $scope.$apply(function () {
+                $scope.isDropdownVisible = false;
+            });
+            console.log("Dropdown hidden due to scroll");
+        }
+    });
     
     // Fungsi untuk navigasi ke halaman login
     $scope.navigateToLogin = function () {

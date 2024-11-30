@@ -144,43 +144,41 @@
 
   .fp-dropdown {
     position: relative;
-}
+    display: inline-block;
+  }
 
-.fp-dropdown-menu {
-  position: absolute;
-  top: 100%;
-  left: 0;
-  background: white;
-  z-index: 2000;
-  opacity: 0;
-  visibility: hidden;
-  pointer-events: none;
-  transition: opacity 0.3s ease, visibility 0.3s ease;
-}
-.fp-dropdown-menu.ng-show {
-  opacity: 1;
-  visibility: visible;
-  pointer-events: auto;
-}
+  .fp-dropdown-menu {
+    display: none;
+    position: absolute;
+    background-color: var(--bg);
+    min-width: 160px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    z-index: 1;
+  }
 
-.ng-hide {
-  display: none !important;
-}
+  body.dark-mode .fp-dropdown-menu {
+    background-color: #444444;
+  }
 
-.fp-dropdown-menu li {
-    padding: 10px 15px;
-}
+  .fp-dropdown-menu li {
+      list-style: none;
+      padding: 8px 16px;
+  }
 
-.fp-dropdown-menu li a {
-    text-decoration: none;
-    color: #333;
-    transition: background-color 0.3s ease, color 0.3s ease;
-}
+  .fp-dropdown-menu li a {
+      color: var(--teks);
+      text-decoration: none;
+      display: block;
+  }
 
-.fp-dropdown-menu li a:hover {
-    background: #f0f0f0;
-    color: #1d4ed8;
-}
+  .fp-dropdown-menu li a:hover {
+      background-color: var(--teks);
+  }
+
+  /* Tambahkan CSS untuk menampilkan dropdown saat ng-show true */
+  .fp-dropdown-menu.ng-show {
+      display: block;
+  }
   
   .get-started-button {
     background-color: var(--icondll);
