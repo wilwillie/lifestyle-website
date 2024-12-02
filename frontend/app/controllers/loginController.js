@@ -5,16 +5,18 @@ angular.module('fashionPediaApp').controller('LoginController', function ($scope
     $scope.login = function () {
         $http.post('http://localhost:5000/auth/login', $scope.user)
             .then(function (response) {
-                // Pastikan status respons adalah 200 dan respons memiliki data yang diharapkan
+                console.log('Login response:', response); // Log respons server untuk debugging
                 if (response.status === 200 && response.data.username) {
                     const user = {
                         username: response.data.username || 'Guest',
-                        icon: response.data.icon || 'assets/images/default-profile.jpg'
+                        icon: response.data.icon || 'assets/images/default-profile.jpg',
+                        bio: response.data.bio || '',
+                        weight: response.data.weight || '',
+                        height: response.data.height || ''
                     };
-
-                    // Simpan data user ke localStorage
                     localStorage.setItem('user', JSON.stringify(user));
-
+                    localStorage.setItem('token', response.data.token); // Simpan token
+                    
                     // Perbarui status login
                     const scope = angular.element(document.body).scope();
                     $timeout(() => {

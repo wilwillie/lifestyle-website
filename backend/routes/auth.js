@@ -129,7 +129,7 @@ router.post('/forgot-password', async (req, res) => {
         const resetToken = jwt.sign({ id: user._id }, process.env.JWT_SECRET, { expiresIn: '1h' });
 
         // Send email with reset link pointing to frontend
-        const resetLink = `http://127.0.0.1:5500/angularjs-login-frontend/reset-password.html?token=${resetToken}`;
+        const resetLink = `http://127.0.0.1:5500/frontend/reset-password.html?token=${resetToken}`;
         await sendEmail(
             email,
             'Password Reset',

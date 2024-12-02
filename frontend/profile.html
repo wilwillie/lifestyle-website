@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="fashionPediaApp">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profile</title>
+
+    <style>
+    /* Profile Section Styles */
+    .profile-section {
+        padding: 40px 0;
+        text-align: center;
+    }
+
+    .profile-container {
+        max-width: 600px;
+        margin: 0 auto;
+        padding: 20px;
+        background-color: #f9f9f9;
+        border-radius: 10px;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    }
+
+    .profile-header {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .profile-header .profile-icon {
+        width: 100px;
+        height: 100px;
+        border-radius: 50%;
+        object-fit: cover;
+        margin-bottom: 20px;
+    }
+
+    .profile-header h2 {
+        font-size: 24px;
+        font-weight: bold;
+        color: #333;
+    }
+
+    .profile-details {
+        margin-top: 30px;
+        font-size: 16px;
+        color: #555;
+    }
+
+    .profile-details p {
+        margin-bottom: 15px;
+    }
+
+    .edit-profile-btn {
+        margin-top: 30px;
+        padding: 10px 20px;
+        background-color: #007bff;
+        color: #fff;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        font-size: 16px;
+    }
+
+    .logout-btn {
+        margin-top: 30px;
+        padding: 10px 20px;
+        background-color: red;
+        color: #fff;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        font-size: 16px;
+    }
+
+    .edit-profile-btn:hover {
+        background-color: grey;
+    }
+    .logout-btn:hover {
+        background-color: grey;
+    }
+
+    /* Footer styles */
+    .footer {
+        padding: 20px;
+        background-color: #333;
+        color: #fff;
+        text-align: center;
+    }
+    </style>
+
+</head>
+<body ng-controller="ProfileController">
+    <!-- Profile Section -->
+    <section class="profile-section">
+        <div class="profile-container">
+            <div class="profile-header">
+                <img ng-src="{{userIcon}}" alt="Profile Icon" class="profile-icon">
+                <h2>{{username}}</h2>
+            </div>
+            <div class="profile-details">
+                <h3>Details</h3>
+                <p><strong>Bio:</strong> {{userBio || 'No bio available'}}</p>
+                <p><strong>Weight:</strong> {{userWeight || 'Not available'}}</p>
+                <p><strong>Height:</strong> {{userHeight || 'Not available'}}</p>
+            </div>
+            <a href="edit-profile.html"><button class="edit-profile-btn" ng-click="editProfile()">Edit Profile</button></a> 
+            <a href="login.html"><button class="logout-btn" ng-click="logout()">Logout</button></a>
+        </div>
+    </section>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular-sanitize.min.js"></script>
+    <script src="app/app.js"></script>
+    <script src="app/controllers/profileController.js"></script>
+</body>
+</html>

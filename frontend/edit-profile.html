@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="fashionPediaApp">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Profile</title>
+
+    <style>
+        /* Styling untuk edit profil */
+        .edit-profile-section {
+            padding: 40px 0;
+            text-align: center;
+        }
+        .edit-profile-container {
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f9f9f9;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        .edit-profile-header h2 {
+            font-size: 24px;
+            font-weight: bold;
+            color: #333;
+        }
+        .edit-profile-form input {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border-radius: 5px;
+            border: 1px solid #ddd;
+        }
+        .save-btn {
+            margin-top: 20px;
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        .save-btn:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body ng-controller="ProfileController">
+    <section class="edit-profile-section">
+        <div class="edit-profile-container">
+            <div class="edit-profile-header">
+                <h2>Edit Profile</h2>
+            </div>
+            <form class="edit-profile-form" ng-submit="saveProfile()">
+                <input type="text" ng-model="userBio" placeholder="Edit Bio" ng-init="userBio = user.bio" required />
+                <input type="number" ng-model="userWeight" placeholder="Edit Weight" ng-init="userWeight = user.weight" required />
+                <input type="number" ng-model="userHeight" placeholder="Edit Height" ng-init="userHeight = user.height" required />
+                <button type="submit" class="save-btn" ng-disabled="editProfileForm.$invalid">Save Changes</button>
+            </form>                      
+        </div>
+    </section>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+    <script src="app/controllers/profileController.js"></script>
+</body>
+</html>

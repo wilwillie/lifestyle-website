@@ -2,11 +2,15 @@ const mongoose = require('mongoose');
 const bcrypt = require('bcrypt');
 
 const UserSchema = new mongoose.Schema({
-    username: { type: String, required: true, unique: true }, // Tambahkan unique untuk username
-    email: { type: String, required: true, unique: true },    // Tambahkan unique untuk email
+    username: { type: String, required: true },
+    email: { type: String, required: true, unique: true },
     password: { type: String, required: true },
     isVerified: { type: Boolean, default: false },
-});
+    bio: { type: String, default: '' },
+    weight: { type: Number, default: null },
+    height: { type: Number, default: null },
+}, { timestamps: true });
+
 
 // Pre-save hook untuk hashing password
 UserSchema.pre('save', async function (next) {
