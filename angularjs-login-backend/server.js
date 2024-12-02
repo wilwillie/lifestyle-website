@@ -17,6 +17,11 @@ connectDB().then(() => {
 const app = express();
 app.use(cors());
 app.use(bodyParser.json());
+
+// Tambahkan ini untuk menyajikan file statis dari folder 'assets'
+app.use('/assets', express.static('assets'));
+
+// Rute autentikasi
 app.use('/auth', authRoutes);
 
 // Fungsi untuk memperbarui email pengguna lama
@@ -39,4 +44,3 @@ const updateOldUsers = async () => {
 
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
-

@@ -1,4 +1,23 @@
 app.controller('MainController', ['$scope', '$window', '$interval', '$document', function ($scope, $window, $interval, $document) {
+    $scope.isLoggedIn = false; // Default: user belum login
+    $scope.username = 'Guest'; // Default username jika belum login
+    $scope.userIcon = 'assets/images/default-profile.jpg'; // Pastikan path benar
+
+    $scope.checkLoginStatus = function () {
+        const user = JSON.parse(localStorage.getItem('user'));
+        if (user && user.username) {
+            $scope.isLoggedIn = true;
+            $scope.username = user.username;
+            $scope.userIcon = user.icon || 'assets/images/default-profile.jpg';
+        } else {
+            $scope.isLoggedIn = false;
+            $scope.username = 'Guest';
+            $scope.userIcon = 'assets/images/default-profile.jpg';
+        }
+    };    
+
+    // Panggil fungsi saat aplikasi dimuat
+    $scope.checkLoginStatus();
     $scope.isDropdownVisible = false;
 
     $scope.toggleDropdown = function ($event) {
@@ -50,6 +69,27 @@ app.controller('MainController', ['$scope', '$window', '$interval', '$document',
         $scope.isDarkMode = !$scope.isDarkMode;
         document.body.classList.toggle('dark-mode', $scope.isDarkMode);
     };
+
+    $scope.isLoggedIn = false; // Default: user belum login
+    $scope.username = ''; // Default username
+    $scope.userIcon = ''; // Default profile icon
+
+    // Simulasikan data user setelah login
+    $scope.checkLoginStatus = function () {
+        const user = JSON.parse(localStorage.getItem('user'));
+        if (user) {
+            $scope.isLoggedIn = true;
+            $scope.username = user.username;
+            $scope.userIcon = user.icon;
+        } else {
+            $scope.isLoggedIn = false;
+            $scope.username = '';
+            $scope.userIcon = '';
+        }
+    };
+    
+    // Panggil fungsi saat aplikasi dimuat
+    $scope.checkLoginStatus();      
 
     $scope.slides = [
         { id: 1, image: 'assets/images/hoodie.jpg', alt: 'Hoodie', link: '/desc/main/slide1/index.html' },

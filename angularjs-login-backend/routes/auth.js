@@ -35,32 +35,33 @@ router.post('/login', async (req, res) => {
     const { usernameOrEmail, password } = req.body;
 
     try {
-        // Cari user berdasarkan username atau email
         const user = await User.findOne({
             $or: [{ email: usernameOrEmail }, { username: usernameOrEmail }]
         });
 
         if (!user) {
-            // Jika user tidak ditemukan
             return res.status(404).json({ message: 'Email or username not found.' });
         }
 
         if (!user.isVerified) {
-            // Jika email belum diverifikasi
             return res.status(403).json({ message: 'Please verify your email before logging in.' });
         }
 
-        // Cek apakah password cocok
         const isMatch = await user.matchPassword(password);
         if (!isMatch) {
-            // Jika password salah
             return res.status(401).json({ message: 'Incorrect password.' });
         }
 
-        // Jika login berhasil, buat JWT token
+        // Buat JWT token
         const token = jwt.sign({ id: user._id }, process.env.JWT_SECRET, { expiresIn: '1h' });
 
-        res.status(200).json({ message: 'Login successful.', token });
+        // Tambahkan username dan icon ke respons
+        res.status(200).json({
+            message: 'Login successful.',
+            token,
+            username: user.username, // Tambahkan username
+            icon: user.icon || 'assets/images/default-profile.jpg' // Default jika icon tidak ada
+        });
     } catch (err) {
         console.error('Error during login:', err.message);
         res.status(500).json({ message: 'An error occurred during login.', error: err.message });

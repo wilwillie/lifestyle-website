@@ -179,6 +179,35 @@
   .fp-dropdown-menu.ng-show {
       display: block;
   }
+
+  .user-profile {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-right: 20px;
+  }
+
+  .user-profile .username {
+      font-size: 16px;
+      font-weight: bold;
+      color: var(--teks);
+  }
+
+  .user-profile .profile-icon {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 2px solid var(--icondll);
+  }
+
+  body.dark-mode .user-profile .username {
+      color: #ffffff;
+  }
+
+  body.dark-mode .user-profile .profile-icon {
+      border-color: #ffffff;
+  }
   
   .get-started-button {
     background-color: var(--icondll);
