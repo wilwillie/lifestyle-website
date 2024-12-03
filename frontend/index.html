@@ -20,7 +20,6 @@
         </div>
     </div>
 
-    <!-- Header -->
     <header class="header hidden" id="main-header">
         <div class="logo-darkmode-container">
             <div class="logo">
@@ -45,11 +44,21 @@
                 <li><a href="#tentang" ng-click="navigate('#tentang')">Tentang</a></li>
             </ul>
         </nav>
-        <a href="profile.html"><div class="user-profile">
-            <span class="username">{{ username }}</span>
-            <img class="profile-icon" ng-src="{{userIcon}}" alt="Profile Icon" />
-        </div></a>
-    </header>    
+        <!-- Hanya tampil jika sudah login -->
+        <a href="profile.html" ng-if="isLoggedIn">
+            <div class="user-profile">
+                <span class="username">{{ username }}</span>
+                <img class="profile-icon" ng-src="{{userIcon}}" alt="Profile Icon" />
+            </div>
+        </a>
+        <!-- Tampilkan jika belum login -->
+        <a href='login.html' div ng-if="!isLoggedIn">
+            <div class="user-profile">
+                <span class="username">Guest</span>
+                <img class="profile-icon" ng-src="{{userIcon}}" alt="Default Profile Icon" />
+            </div>
+        </a>
+    </header>      
 
     <!-- Content -->
     <div id="afterlogin" class="slider-container">

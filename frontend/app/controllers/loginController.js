@@ -10,9 +10,6 @@ angular.module('fashionPediaApp').controller('LoginController', function ($scope
                     const user = {
                         username: response.data.username || 'Guest',
                         icon: response.data.icon || 'assets/images/default-profile.jpg',
-                        bio: response.data.bio || '',
-                        weight: response.data.weight || '',
-                        height: response.data.height || ''
                     };
                     localStorage.setItem('user', JSON.stringify(user));
                     localStorage.setItem('token', response.data.token); // Simpan token

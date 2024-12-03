@@ -70,24 +70,6 @@ app.controller('MainController', ['$scope', '$window', '$interval', '$document',
         document.body.classList.toggle('dark-mode', $scope.isDarkMode);
     };
 
-    $scope.isLoggedIn = false; // Default: user belum login
-    $scope.username = ''; // Default username
-    $scope.userIcon = ''; // Default profile icon
-
-    // Simulasikan data user setelah login
-    $scope.checkLoginStatus = function () {
-        const user = JSON.parse(localStorage.getItem('user'));
-        if (user) {
-            $scope.isLoggedIn = true;
-            $scope.username = user.username;
-            $scope.userIcon = user.icon;
-        } else {
-            $scope.isLoggedIn = false;
-            $scope.username = '';
-            $scope.userIcon = '';
-        }
-    };
-    
     // Panggil fungsi saat aplikasi dimuat
     $scope.checkLoginStatus();      
 
@@ -151,8 +133,8 @@ app.controller('MainController', ['$scope', '$window', '$interval', '$document',
     $scope.desc = 'Sesuai motto di atas yaitu mengekspresikan atau menunjukkan rasa percaya diri melalui cara berpakaian. Ini menggambarkan ide bahwa pakaian bisa menjadi alat untuk menciptakan atau memperkuat kepercayaan diri seseorang. Jadi, semakin percaya diri seseorang, semakin baik mereka bisa "memakai" kepercayaan diri itu.';
 
     $scope.categories = [
-        { title: 'Men', image: 'assets/images/men2.jpg', link: '/sex/men/index.html' },
-        { title: 'Women', image: 'assets/images/women.jpg', link: '/sex/women/index.html' }
+        { title: 'Men', image: 'assets/images/men2.jpg', link: 'gallery.html#men' },
+        { title: 'Women', image: 'assets/images/women.jpg', link: 'gallery.html#men' }
     ];
 
     $scope.about = `
