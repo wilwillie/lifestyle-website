@@ -5,7 +5,6 @@ const cors = require('cors');
 const mongoose = require('mongoose');
 const authRoutes = require('./routes/auth');
 const User = require('./models/User'); // Pastikan Anda mengimpor model User
-const authenticate = require('./middleware/authenticate'); // Mengimpor middleware autentikasi
 
 dotenv.config();
 
@@ -32,27 +31,7 @@ app.use('/assets', express.static('assets'));
 
 // Rute autentikasi
 app.use('/auth', authRoutes);
-// Mengupdate profil berdasarkan userId yang didapat dari autentikasi
-app.put('/api/user/updateProfile', authenticate, async (req, res) => {
-    const { bio, weight, height } = req.body;
-    const userId = req.user._id;
 
-    try {
-        const user = await User.findById(userId);
-        if (!user) {
-            return res.status(404).json({ success: false, message: 'User tidak ditemukan' });
-        }
-
-        user.bio = bio;
-        user.weight = weight;
-        user.height = height;
-
-        await user.save();
-        res.status(200).json({ success: true, user });
-    } catch (err) {
-        res.status(500).json({ success: false, message: 'Terjadi kesalahan di server. Silakan coba lagi.' });
-    }
-});
 // Fungsi untuk memperbarui email pengguna lama
 const updateOldUsers = async () => {
     try {
@@ -70,8 +49,6 @@ const updateOldUsers = async () => {
         console.error('Error updating old users:', err.message);
     }
 };
-
-
 
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => console.log(`Server running on port ${PORT}`));

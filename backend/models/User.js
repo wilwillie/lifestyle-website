@@ -6,10 +6,7 @@ const UserSchema = new mongoose.Schema({
     email: { type: String, required: true, unique: true },
     password: { type: String, required: true },
     isVerified: { type: Boolean, default: false },
-    bio: { type: String, default: '' },
-    weight: { type: Number, default: null },
-    height: { type: Number, default: null },
-}, { timestamps: true });
+});
 
 
 // Pre-save hook untuk hashing password
