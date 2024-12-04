@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="fashionPediaApp">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Comment Section</title>
+        <style>
+            body {
+                font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+                background: #f7f7f7;
+                color: #333;
+                margin: 0;
+                padding: 0;
+            }
+            .comment-container {
+                max-width: 600px;
+                margin: 50px auto;
+                padding: 40px;
+                background: #ffffff;
+                border-radius: 12px;
+                box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+            }
+            .comment-item {
+                background-color: #f1f1f1;
+                margin-bottom: 10px;
+                padding: 10px;
+                border-radius: 8px;
+            }
+            .comment-item img {
+                width: 40px;
+                height: 40px;
+                border-radius: 50%;
+                margin-right: 10px;
+            }
+            .comment-item p {
+                margin: 0;
+            }
+        </style>
+    </head>
+    <body ng-controller="commentController">
+        <div class="comment-container">
+            <h2>Post a Comment</h2>
+            <form ng-submit="saveComment()">
+                <label for="comment">Your Comment</label>
+                <input type="text" id="comment" ng-model="userComment" placeholder="Enter your comment" required>
+                <button type="submit" class="post-btn">Post Comment</button>
+            </form>
+
+            <h3>Comments</h3>
+            <div class="comments-list">
+                <!-- Loop through the comments array and display each comment -->
+                <div class="comment-item" ng-repeat="comment in comments">
+                    <p><strong>{{comment.username}}</strong></p>
+                    <p>{{comment.comment}}</p>
+                    <p><em>{{comment.timestamp | date:'short'}}</em></p>
+                </div>
+            </div>
+        </div>
+
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+        <script src="app/app.js"></script>
+        <script src="app/controllers/commentController.js"></script>
+    </body>
+</html>
