@@ -1,13 +1,19 @@
 const mongoose = require('mongoose');
 const bcrypt = require('bcrypt');
 
+const CommentSchema = new mongoose.Schema({
+    comment: { type: String, required: true },
+    timestamp: { type: Date, default: Date.now }
+});
+
+// User Schema
 const UserSchema = new mongoose.Schema({
     username: { type: String, required: true },
     email: { type: String, required: true, unique: true },
     password: { type: String, required: true },
+    comments: [CommentSchema],  // Array of comment objects
     isVerified: { type: Boolean, default: false },
 });
-
 
 // Pre-save hook untuk hashing password
 UserSchema.pre('save', async function (next) {
