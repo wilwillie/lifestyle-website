@@ -93,6 +93,50 @@ app.put('/comments/:id', async (req, res) => {
     }
 });
 
+// Edit komentar
+app.put('/comments/:id', async (req, res) => {
+    try {
+        const { comment } = req.body;
+        const { id } = req.params;
+
+        // Validasi input
+        if (!comment) {
+            return res.status(400).json({ message: 'Comment is required.' });
+        }
+
+        // Cari komentar berdasarkan ID dan perbarui
+        const updatedComment = await Comment.findByIdAndUpdate(id, { comment }, { new: true });
+
+        if (!updatedComment) {
+            return res.status(404).json({ message: 'Comment not found.' });
+        }
+
+        res.status(200).json({ message: 'Comment updated successfully!', comment: updatedComment });
+    } catch (error) {
+        console.error('Error updating comment:', error);
+        res.status(500).json({ message: 'Error updating comment.' });
+    }
+
+});
+
+// Hapus komentar
+// Menghapus komentar berdasarkan ID
+app.delete('/comments/:id', async (req, res) => {
+    try {
+        const { id } = req.params;
+        const deletedComment = await Comment.findByIdAndDelete(id);
+
+        if (!deletedComment) {
+            return res.status(404).json({ message: 'Comment not found.' });
+        }
+
+        res.status(200).json({ message: 'Comment deleted successfully!' });
+    } catch (error) {
+        console.error('Error deleting comment:', error); // Log error di sini
+        res.status(500).json({ message: 'Error deleting comment.' });
+    }
+});
+
 
 
 
