@@ -91,26 +91,26 @@ $scope.deleteComment = function(commentId, index) {
 
     /** Galeri Produk **/
     $scope.items = [
-        { title: 'Kemeja', image: 'assets/images/gallery/kemeja1.jpg', category: 'men', productType: 'atasan' },
-        { title: 'Flannel', image: 'assets/images/gallery/flannel.jpg', category: 'men', productType: 'atasan' },
-        { title: 'Sweater', image: 'assets/images/gallery/sweater1.jpg', category: 'men', productType: 'atasan' },
-        { title: 'Graphic Tee', image: 'assets/images/gallery/graphictee1.jpg', category: 'men', productType: 'atasan' },
-        { title: 'Hoodie', image: 'assets/images/gallery/hoodie.jpg', category: 'men', productType: 'atasan' },
-        { title: 'Celana Bahan', image: 'assets/images/gallery/celanabahan1.jpg', category: 'men', productType: 'bawahan' },
-        { title: 'Celana Chinos', image: 'assets/images/gallery/celanachinos1.jpg', category: 'men', productType: 'bawahan' },
-        { title: 'Celana Jeans', image: 'assets/images/gallery/celanajeans1.jpg', category: 'men', productType: 'bawahan' },
-        { title: 'Ikat Pinggang', image: 'assets/images/gallery/ikatpinggang1.jpg', category: 'men', productType: 'aksesoris' },
-        { title: 'Jam Tangan', image: 'assets/images/gallery/jamtangan1.jpg', category: 'men', productType: 'aksesoris' },
-        { title: 'Blouse', image: 'assets/images/gallery/blouse1.jpg', category: 'women', productType: 'atasan' },
-        { title: 'Babytee', image: 'assets/images/gallery/babytee1.jpg', category: 'women', productType: 'atasan' },
-        { title: 'Cardigan', image: 'assets/images/gallery/cardigan1.jpg', category: 'women', productType: 'atasan' },
-        { title: 'Peplum Top', image: 'assets/images/gallery/peplumtop1.jpg', category: 'women', productType: 'atasan' },
-        { title: 'T-shirt', image: 'assets/images/gallery/tshirt.jpg', category: 'women', productType: 'atasan' },
-        { title: 'Rok', image: 'assets/images/gallery/rok1.jpg', category: 'women', productType: 'bawahan' },
-        { title: 'Celana Jeans', image: 'assets/images/gallery/celanajeans2.jpg', category: 'women', productType: 'bawahan' },
-        { title: 'Kalung', image: 'assets/images/gallery/kalung1.jpg', category: 'women', productType: 'aksesoris' },
-        { title: 'Anting', image: 'assets/images/gallery/anting1.jpg', category: 'women', productType: 'aksesoris' },
-        { title: 'Gelang', image: 'assets/images/gallery/gelang1.jpg', category: 'women', productType: 'aksesoris' },
+        { title: 'Kemeja', image: 'assets/images/gallery/kemeja1.jpg', category: 'men', productType: 'atasan', infoPage: 'informationpages/kemeja.html'},
+        { title: 'Flannel', image: 'assets/images/gallery/flannel.jpg', category: 'men', productType: 'atasan', infoPage: 'informationpages/flannel.html' },
+        { title: 'Sweater', image: 'assets/images/gallery/sweater1.jpg', category: 'men', productType: 'atasan', infoPage: 'informationpages/sweater.html' },
+        { title: 'Graphic Tee', image: 'assets/images/gallery/graphictee1.jpg', category: 'men', productType: 'atasan', infoPage: 'informationpages/graphictee.html'},
+        { title: 'Hoodie', image: 'assets/images/gallery/hoodie.jpg', category: 'men', productType: 'atasan', infoPage: 'informationpages/hoodie.html' },
+        { title: 'Celana Bahan', image: 'assets/images/gallery/celanabahan1.jpg', category: 'men', productType: 'bawahan', infoPage: 'informationpages/celanabahan.html' },
+        { title: 'Celana Chinos', image: 'assets/images/gallery/celanachinos1.jpg', category: 'men', productType: 'bawahan', infoPage: 'informationpages/celanachinos.html' },
+        { title: 'Celana Jeans', image: 'assets/images/gallery/celanajeans1.jpg', category: 'men', productType: 'bawahan', infoPage: 'informationpages/celanajeans.html' },
+        { title: 'Ikat Pinggang', image: 'assets/images/gallery/ikatpinggang1.jpg', category: 'men', productType: 'aksesoris', infoPage: 'informationpages/ikatpinggang.html' },
+        { title: 'Jam Tangan', image: 'assets/images/gallery/jamtangan1.jpg', category: 'men', productType: 'aksesoris', infoPage: 'informationpages/jamtangan.html' },
+        { title: 'Blouse', image: 'assets/images/gallery/blouse1.jpg', category: 'women', productType: 'atasan', infoPage: 'informationpages/blouse.html' },
+        { title: 'Babytee', image: 'assets/images/gallery/babytee1.jpg', category: 'women', productType: 'atasan', infoPage: 'informationpages/babytee.html' },
+        { title: 'Cardigan', image: 'assets/images/gallery/cardigan1.jpg', category: 'women', productType: 'atasan', infoPage: 'informationpages/cardigan.html' },
+        { title: 'Peplum Top', image: 'assets/images/gallery/peplumtop1.jpg', category: 'women', productType: 'atasan', infoPage: 'informationpages/peplumtop.html' },
+        { title: 'T-shirt', image: 'assets/images/gallery/tshirt.jpg', category: 'women', productType: 'atasan', infoPage: 'informationpages/tshirt.html' },
+        { title: 'Rok', image: 'assets/images/gallery/rok1.jpg', category: 'women', productType: 'bawahan', infoPage: 'informationpages/rok.html' },
+        { title: 'Celana Jeans', image: 'assets/images/gallery/celanajeans2.jpg', category: 'women', productType: 'bawahan', infoPage: 'informationpages/celanajeans2.html' },
+        { title: 'Kalung', image: 'assets/images/gallery/kalung1.jpg', category: 'women', productType: 'aksesoris', infoPage: 'informationpages/kalung.html' },
+        { title: 'Anting', image: 'assets/images/gallery/anting1.jpg', category: 'women', productType: 'aksesoris', infoPage: 'informationpages/anting.html' },
+        { title: 'Gelang', image: 'assets/images/gallery/gelang1.jpg', category: 'women', productType: 'aksesoris', infoPage: 'informationpages/gelang.html' },
 
 
     ];
@@ -163,4 +163,14 @@ $scope.deleteComment = function(commentId, index) {
 
     // Pastikan filter dijalankan ketika halaman pertama kali dimuat
     $scope.filterImages();
+
+    $scope.goToProductPage = function (url) {
+        if (url) {
+            window.location.href = url; // Mengarahkan pengguna ke halaman yang ditentukan
+        } else {
+            alert("Halaman produk tidak tersedia!");
+        }
+    };
+    
+    
 });

@@ -74,9 +74,9 @@ app.controller('MainController', ['$scope', '$window', '$interval', '$document',
     $scope.checkLoginStatus();      
 
     $scope.slides = [
-        { id: 1, image: 'assets/images/hoodie.jpg', alt: 'Hoodie', link: '/desc/main/slide1/index.html' },
-        { id: 2, image: 'assets/images/tshirt.jpg', alt: 'Tshirt', link: '/desc/main/slide2/index.html' },
-        { id: 3, image: 'assets/images/flannel.jpg', alt: 'Flannel', link: '/desc/main/slide3/index.html' }
+        { id: 1, image: 'assets/images/hoodie.jpg', alt: 'Hoodie', link: 'informationpages/hoodie.html' },
+        { id: 2, image: 'assets/images/tshirt.jpg', alt: 'Tshirt', link: 'informationpages/tshirt.html' },
+        { id: 3, image: 'assets/images/flannel.jpg', alt: 'Flannel', link: 'informationpages/flannel.html' }
     ];
 
     // Duplikasikan slide pertama dan terakhir dengan salinan mendalam agar tidak ada duplikasi key
