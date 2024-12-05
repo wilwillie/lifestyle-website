@@ -19,100 +19,33 @@
             padding: 20px;
             box-sizing: border-box;
         }
-        .header {
-    position: fixed;
-    top: 0;
-    width: 100%;
-    z-index: 1000;
-    background-color: rgba(255, 255, 255, 1); /* memastikan warna putih solid */
-    transition: transform 0.3s ease-in-out;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.15);
-    z-index: 9999;
-  }
-  header.header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 10px 20px;
-    width: 100%;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.15);
-    position: fixed;
-    top: 0;
-    z-index: 1000;
-    background: #ffffff;
-  }
-  .logo-darkmode-container {
-    display: flex;
-    align-items: center;
-    gap: 15px;
-  }
-  
-  .logo a {
-    text-decoration: none;
-    font-size: 20px;
-    font-weight: bold;
-    color: var(--teks);
-  }
-  
-  .logo a:hover {
-    color: var(--icondll);
-  }
-  
-  .nav ul {
-    list-style: none;
-    margin: 0;
-    padding: 0;
-    display: flex;
-    gap: 10px;
-  }
-  
-  .nav ul li a {
-    text-decoration: none;
-    font-size: 14px;
-    padding: 5px 10px;
-    color: var(--teks);
-    transition: color 0.3s ease;
-  }
-  
-  .nav ul li a:hover {
-    color: var(--icondll);
-  }
-
-  .fp-dropdown {
-    position: relative;
-    display: inline-block;
-  }
-
-  .fp-dropdown-menu {
-    display: none;
-    position: absolute;
-    background-color: var(--bg);
-    min-width: 160px;
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
-    z-index: 1;
-  }
+        
         .container {
             width: 100%;
             max-width: 400px;
-            padding: 20px;
-            background: #ffffff;
+            padding: 30px;
+            background: rgba(255, 255, 255, 0.8);
             border-radius: 15px;
             box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
             text-align: center;
+            transition: transform 0.3s ease;
         }
         .container h1 {
-            font-size: 1.8rem;
-            margin-bottom: 15px;
+            margin: -5px 0px;
+            font-size: 2rem;
+            margin-bottom: 20px;
             color: #1d4ed8;
         }
         .container input {
-            width: 85%;
-            padding: 8px 12px;
-            margin-bottom: 10px;
-            font-size: 0.9rem;
-            border: 1px solid #ddd;
-            border-radius: 8px;
+            align-items: center;
+            width: 91.5%;
+            padding: 12px 15px;
+            margin-bottom: 15px;
+            font-size: 1rem;
+            border: 2px solid #ddd;
+            border-radius: 10px;
             transition: all 0.3s ease-in-out;
+            background-color: #f9f9f9;
         }
         .container input:focus {
             border-color: #1d4ed8;
@@ -120,22 +53,23 @@
             box-shadow: 0 0 8px rgba(29, 78, 216, 0.2);
         }
         .container button {
-            width: 90%;
-            padding: 10px 15px;
-            font-size: 0.9rem;
+            width: 100%;
+            padding: 12px 20px;
+            font-size: 1rem;
             color: #fff;
             background-color: #1d4ed8;
             border: none;
-            border-radius: 8px;
+            border-radius: 10px;
             cursor: pointer;
-            transition: background-color 0.3s ease-in-out;
+            transition: background-color 0.3s ease-in-out, transform 0.3s ease;
         }
         .container button:hover {
             background-color: #2563eb;
+            transform: scale(1.05);
         }
         .form-group {
             text-align: left;
-            margin-bottom: 10px;
+            margin-bottom: 15px;
         }
         .form-group.inline {
             display: flex;
@@ -144,11 +78,72 @@
         }
         .checkbox-group {
             display: flex;
-            gap: 10px;
+            gap: 15px;
+            align-items: center;
+            font-size: 1rem;
         }
+        .custom-radio {
+            display: flex;
+            align-items: center;
+            position: relative;
+            cursor: pointer;
+        }
+
+        .custom-radio input[type="radio"] {
+            display: none; /* Hide the default radio button */
+        }
+
+        .radio-button {
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            border: 2px solid #ddd;
+            margin-right: 10px;
+            position: relative;
+            transition: background-color 0.3s ease, border-color 0.3s ease;
+        }
+
+        .custom-radio input[type="radio"]:checked + .radio-button {
+            background-color: #1d4ed8;
+            border-color: #1d4ed8;
+        }
+
+        .radio-button:after {
+            content: "";
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background-color: white;
+            transition: background-color 0.3s ease;
+        }
+
+        .custom-radio input[type="radio"]:checked + .radio-button:after {
+            background-color: #1d4ed8;
+        }
+
+        .custom-radio span {
+            font-size: 1rem;
+            color: #333;
+            transition: color 0.3s ease;
+        }
+
+        .custom-radio:hover .radio-button {
+            border-color: #1d4ed8;
+        }
+
+        .custom-radio:hover span {
+            color: #1d4ed8;
+        }
+
+        .custom-radio input[type="radio"]:checked + .radio-button {
+            background-color: #1d4ed8;
+        }
+
+
         .checkbox-group label {
-            font-size: 0.9rem;
-            margin-right: 5px;
+            font-size: 1rem;
+            margin-right: 10px;
         }
         .modal {
             display: none;
@@ -157,30 +152,34 @@
             left: 50%;
             transform: translate(-50%, -50%);
             background: #fff;
-            max-width: 300px;
-            border-radius: 15px;
-            padding: 20px;
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+            max-width: 350px;
+            border-radius: 20px;
+            padding: 30px;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
             z-index: 1000;
             max-height: 80vh;
             overflow-y: auto;
             text-align: center;
+            transition: transform 0.3s ease-in-out;
         }
         .modal.show {
             display: block;
+            transform: translate(-50%, -50%) scale(1);
         }
         .modal h2 {
             color: #1d4ed8;
-            font-size: 18px;
-            margin-bottom: 10px;
+            font-size: 22px;
+            margin-bottom: 20px;
         }
         .modal p {
             font-size: 16px;
+            margin-bottom: 20px;
             text-align: justify;
         }
         .modal h3 {
             font-weight: lighter;
             font-size: 16px;
+            margin-top: 10px;
             text-align: justify;
         }
         .modal ul li {
@@ -188,57 +187,49 @@
             text-align: justify;
         }
         .modal img {
-            height: 280px;
-            margin: 15px 0;
+            width: 100%;
+            height: auto;
+            margin: 20px 0;
+            border-radius: 12px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        .modal button {
+            padding: 12px 25px;
+            background-color: #1d4ed8;
+            color: white;
+            border: none;
             border-radius: 8px;
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+        }
+        .modal button:hover {
+            background-color: #2563eb;
+            transform: scale(1.05);
         }
     </style>
 </head>
 
 <body ng-controller="BodyShapeController">
-    <header class="header hidden" id="main-header">
-        <div class="logo-darkmode-container">
-            <div class="logo">
-                <a href="/" ng-click="navigate('/')">FASHION PEDIA</a>
-            </div>
-            <div class="dark-mode-toggle">
-                <span id="toggleDarkMode" class="icon-moon" ng-click="toggleDarkMode()">
-                    {{ isDarkMode ? '☀️' : '🌙' }}
-                </span>
-            </div>
-        </div>
-        <nav class="nav">
-            <ul>
-                <li><a href="index.html" ng-click="navigate('index.html')">Home</a></li>
-                <li class="fp-dropdown">
-                    <a href="index.html#category" ng-click="toggleDropdown($event)">Category</a>
-                    <ul class="fp-dropdown-menu" ng-show="isDropdownVisible">
-                        <li><a href="index.html#category/men" ng-click="navigate('index.html#category/men')">Men</a></li>
-                        <li><a href="index.html#category/women" ng-click="navigate('index.html#category/women')">Women</a></li>
-                    </ul>
-                </li> 
-                <li><a href="bodyshape.html" ng-click="navigate('bodyshape.html')">Bodyshape Calculator</a></li>                                                                            
-                <li><a href="index.html#tentang" ng-click="navigate('#tentang')">Tentang</a></li>
-            </ul>
-        </nav>
-    </header>
+
     <div class="container">
         <h1>Body Shape Calculator</h1>
         <form id="bodyShapeForm" ng-submit="calculateBodyShape()">
             <div class="form-group inline">
                 <label>Jenis Kelamin:</label>
                 <div class="checkbox-group">
-                    <label>
+                    <label class="custom-radio">
                         <input type="radio" name="gender" id="female" ng-model="formData.gender" value="female">
+                        <span class="radio-button"></span>
                         Wanita
                     </label>
-                    <label>
+                    <label class="custom-radio">
                         <input type="radio" name="gender" id="male" ng-model="formData.gender" value="male">
+                        <span class="radio-button"></span>
                         Pria
                     </label>
                 </div>
             </div>
-            
+                        
             <div class="form-group">
                 <label for="weight">Berat Badan (kg):</label>
                 <input type="number" id="weight" ng-model="formData.weight" required>
@@ -272,90 +263,10 @@
             <li>{{fashionProduct2}}</li>
             <li>{{fashionProduct3}}</li>
         </ul>
-    
-        <button ng-click="closeModal()" style="padding: 10px 20px; background-color: #1d4ed8; color: white; border: none; border-radius: 8px; cursor: pointer;">Kembali</button>
+        <button ng-click="closeModal()">Kembali</button>
     </div>
-    
 
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
-    <script>
-        const app = angular.module('fashionPediaApp', []);
-        app.controller('BodyShapeController', ['$scope', function($scope) {
-            $scope.isModalVisible = false;
-            $scope.formData = {};
-            $scope.bodyShapeResult = '';
-            $scope.bodyShapeImage = '';
-
-            $scope.calculateBodyShape = function() {
-                const { weight, height, chest, hip, gender } = $scope.formData;
-
-                if (!weight || !height || !chest || !hip || !gender) {
-                    alert('Harap pilih jenis kelamin dan isi semua field!');
-                    return;
-                }
-
-                let chestHipRatio = chest / hip;
-                let heightWeightRatio = height / weight;
-
-                if (gender === 'female') {
-    if (chestHipRatio > 1.1) {
-        $scope.bodyShapeResult = 'Apple Shape';
-        $scope.bodyShapeDescription = 'Apple Shape memiliki tubuh dengan berat badan terpusat di area perut, dengan bentuk tubuh yang lebih besar di bagian atas, terutama di sekitar dada dan perut. Biasanya, bentuk tubuh ini memiliki pinggang yang kurang terlihat, dengan pinggul yang lebih sempit dan kaki yang lebih ramping.';
-        $scope.fashionProduct1 = 'Wrap Dress - Membantu memberikan bentuk pada tubuh dengan menarik perhatian pada pinggang.';
-        $scope.fashionProduct2 = 'V-neck Top - Membantu menciptakan ilusi leher lebih panjang dan menonjolkan garis wajah.';
-        $scope.fashionProduct3 = 'High-Waist Jeans - Meningkatkan proporsi tubuh dengan menekankan pinggang dan memperpanjang kaki.';
-        $scope.bodyShapeImage = 'assets/bodyshapes/applew.png';
-    } else if (chestHipRatio < 0.9) {
-        $scope.bodyShapeResult = 'Pear Shape';
-        $scope.bodyShapeDescription = 'Pear Shape memiliki pinggul yang lebih lebar dibandingkan dengan dada, dengan tubuh bagian bawah lebih besar dari bagian atas. Biasanya, tubuh ini memiliki pinggang yang jelas dan perut yang ramping, dengan paha dan pinggul yang lebih besar. Pemilik body shape ini cenderung memiliki bentuk tubuh seperti pir dengan kaki yang proporsional.';
-        $scope.fashionProduct1 = 'A-line Skirt - Menambahkan volume pada bagian bawah tubuh untuk menyeimbangkan pinggul yang lebih besar.';
-        $scope.fashionProduct2 = 'Off-Shoulder Top - Membuka bagian atas tubuh dan menarik perhatian pada bahu dan leher, menyeimbangkan pinggul yang lebih besar.';
-        $scope.fashionProduct3 = 'Flared Pants - Membantu menyeimbangkan bentuk tubuh dengan memberi kesan kaki lebih panjang dan proporsional dengan pinggul.';
-        $scope.bodyShapeImage = 'assets/bodyshapes/pearw.png';
-    } else if (chestHipRatio >= 0.9 && chestHipRatio <= 1.1) {
-        $scope.bodyShapeResult = heightWeightRatio > 3.2 ? 'Hourglass Shape' : 'Square Shape';
-        $scope.bodyShapeDescription = heightWeightRatio > 3.2
-            ? 'Hourglass Shape memiliki tubuh dengan proporsi yang seimbang antara dada dan pinggul, dengan pinggang yang kecil. Bentuk tubuh ini sering dianggap sebagai bentuk tubuh ideal karena simetri dan lekukannya yang jelas. Pemilik tubuh ini cenderung memiliki lekukan alami yang menonjolkan bentuk tubuh mereka, baik di bagian atas maupun bawah.'
-            : 'Square Shape cenderung memiliki tubuh dengan sedikit lekuk atau kurva yang jelas, dengan dada, pinggang, dan pinggul yang hampir sejajar. Bentuk tubuh ini terlihat lebih lurus, dan sering kali tampak atletis, dengan sedikit lekukan di bagian pinggang.';
-        $scope.fashionProduct1 = heightWeightRatio > 3.2 ? 'Peplum Top - Menambah volume di sekitar pinggang dan menciptakan lebih banyak lekukan tubuh.' : 'Straight Cut Pants - Membantu memberikan bentuk lebih jelas pada tubuh dengan siluet yang lebih lurus.';
-        $scope.fashionProduct2 = heightWeightRatio > 3.2 ? 'Bodycon Dress - Memperlihatkan lekukan tubuh alami dengan pas di tubuh.' : 'Boxy Blazer - Memberikan keseimbangan dengan sedikit volume di bagian atas tubuh.';
-        $scope.fashionProduct3 = heightWeightRatio > 3.2 ? 'Fitted Skirt - Menekankan lekukan tubuh dengan garis tubuh yang lebih jelas.' : 'Simple T-shirt - Memiliki desain yang minimalis, memberikan kesan tubuh yang lebih proporsional.';
-        $scope.bodyShapeImage = heightWeightRatio > 3.2
-            ? 'assets/bodyshapes/hourglassw.png'
-            : 'assets/bodyshapes/rectanglew.png';
-    }
-} else if (gender === 'male') {
-    if (chestHipRatio > 1.1) {
-        $scope.bodyShapeResult = 'Inverted Triangle';
-        $scope.bodyShapeDescription = 'Inverted Triangle memiliki tubuh dengan dada yang lebih besar dibandingkan pinggul. Pemilik bentuk tubuh ini umumnya memiliki bahu yang lebih lebar dan tubuh bagian atas yang lebih besar. Pinggul mereka cenderung sempit dan kaki terlihat lebih ramping. Bentuk tubuh ini sering ditemukan pada individu dengan tubuh atletis atau berotot, terutama di bagian atas tubuh.';
-        $scope.fashionProduct1 = 'Fitted Shirt - Menekankan tubuh bagian atas dengan potongan yang pas di badan, memperlihatkan bentuk tubuh lebih jelas.';
-        $scope.fashionProduct2 = 'Slim Fit Jeans - Membantu memberi kesan ramping pada kaki dan menyeimbangkan bagian atas tubuh yang lebih besar.';
-        $scope.fashionProduct3 = 'V-neck Sweater - Membuka area leher, menonjolkan bentuk tubuh bagian atas dengan memberikan kesan tubuh lebih ramping di bagian bawah.';
-        $scope.bodyShapeImage = 'assets/bodyshapes/invertedtriangle.png';
-    } else if (chestHipRatio < 0.9) {
-        $scope.bodyShapeResult = 'Triangle';
-        $scope.bodyShapeDescription = 'Triangle memiliki tubuh dengan pinggul yang lebih besar dibandingkan dada. Bentuk tubuh ini memiliki bagian bawah tubuh yang lebih besar dari bagian atas. Pinggang mereka jelas terlihat, namun dada cenderung lebih sempit. Pemilik tubuh ini memiliki bentuk tubuh yang lebih lebar di bagian bawah, dengan pinggul yang lebih besar dan kaki yang lebih proporsional.';
-        $scope.fashionProduct1 = 'Slim Fit Shirts - Membantu menonjolkan bagian atas tubuh dan membuat tubuh bagian bawah lebih seimbang.';
-        $scope.fashionProduct2 = 'Jogger Pants - Memberikan kenyamanan dan keseimbangan dengan bagian bawah tubuh yang lebih lebar.';
-        $scope.fashionProduct3 = 'Tapered Trousers - Membantu menyeimbangkan tubuh dengan siluet yang lebih ramping pada bagian kaki.';
-        $scope.bodyShapeImage = 'assets/bodyshapes/triangle.png';
-    } else if (chestHipRatio >= 0.9 && chestHipRatio <= 1.1) {
-        $scope.bodyShapeResult = 'Rectangle Shape';
-        $scope.bodyShapeDescription = 'Rectangle Shape memiliki tubuh yang lebih lurus tanpa banyak lekukan, dengan dada, pinggang, dan pinggul yang hampir sejajar. Bentuk tubuh ini lebih sering terlihat pada individu dengan tubuh atletis atau kurus, dengan sedikit lekukan atau tidak ada sama sekali di sekitar pinggang. Proporsi tubuh mereka cenderung simetris dan kurang memiliki perbedaan yang jelas antara bagian atas dan bawah.';
-        $scope.fashionProduct1 = 'Slim Fit Jackets - Menambahkan struktur pada tubuh dengan memberikan bentuk yang lebih jelas pada bagian atas.';
-        $scope.fashionProduct2 = 'Straight Fit Jeans - Memberikan tampilan tubuh yang lebih seimbang dan siluet yang lebih lurus.';
-        $scope.fashionProduct3 = 'Casual Shirts - Menambah volume pada bagian atas tubuh untuk memberikan ilusi lekukan alami.';
-        $scope.bodyShapeImage = 'assets/bodyshapes/rectanglem.png';
-    }
-}
-                $scope.isModalVisible = true;
-            };
-
-            // Close modal function
-            $scope.closeModal = function() {
-                $scope.isModalVisible = false;
-            };
-        }]);
-    </script>
+    <script src="app/controllers/bodyshapeController.js"></script>
 </body>
 </html>

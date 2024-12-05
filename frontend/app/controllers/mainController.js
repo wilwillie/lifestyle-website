@@ -134,7 +134,7 @@ app.controller('MainController', ['$scope', '$window', '$interval', '$document',
 
     $scope.categories = [
         { title: 'Men', image: 'assets/images/men2.jpg', link: 'gallery.html#men' },
-        { title: 'Women', image: 'assets/images/women.jpg', link: 'gallery.html#men' }
+        { title: 'Women', image: 'assets/images/women.jpg', link: 'gallery.html#women' }
     ];
 
     $scope.about = `
@@ -145,6 +145,94 @@ app.controller('MainController', ['$scope', '$window', '$interval', '$document',
         Mari eksplorasi dunia fashion bersama kami, karena di <strong>Fashion Pedia</strong>, 
         kami yakin bahwa <i>"Wear Your Confidence"</i> adalah kunci untuk tampil terbaik dalam setiap langkah kehidupanmu.
     `;
+
+    $scope.blogs = [
+        {
+            title: 'Clothes Retail KPIs 2021 Guide for Clothes Executives.',
+            category: 'Fashion',
+            image: 'assets/images/flannel.jpg',
+            link: '#',
+            date: 'Apr 06, 2022',
+            author: 'Mr Admin'
+        },
+        {
+            title: 'Curbside fashion Trends: How to Win the Pickup Battle.',
+            category: 'Clothes',
+            image: 'assets/images/flannel.jpg',
+            link: '#',
+            date: 'Jan 18, 2022',
+            author: 'Mr Robin'
+        },
+        {
+            title: 'EBT vendors: Claim Your Share of SNAP Online Revenue.',
+            category: 'Shoes',
+            image: 'assets/images/flannel.jpg',
+            link: '#',
+            date: 'Feb 10, 2022',
+            author: 'Mr Selsa'
+        },
+        {
+            title: 'Curbside fashion Trends: How to Win the Pickup Battle.',
+            category: 'Electronics',
+            image: 'assets/images/flannel.jpg',
+            link: '#',
+            date: 'Mar 15, 2022',
+            author: 'Mr Pawar'
+        },
+        {
+            title: 'Curbside fashion Trends: How to Win the Pickup Battle.',
+            category: 'Electronics',
+            image: 'assets/images/flannel.jpg',
+            link: '#',
+            date: 'Mar 15, 2022',
+            author: 'Mr Pawar'
+        },
+        {
+            title: 'Curbside fashion Trends: How to Win the Pickup Battle.',
+            category: 'Electronics',
+            image: 'assets/images/flannel.jpg',
+            link: '#',
+            date: 'Mar 15, 2022',
+            author: 'Mr Pawar'
+        }
+    ];
+
+    const container = document.querySelector('.blog-cards-wrapper');
+
+    // Auto-scroll every 3 seconds, loop seamlessly
+    let scrollInterval;
+    function autoScroll() {
+        const maxScrollLeft = container.scrollWidth - container.clientWidth; // Maximum scroll distance
+        const currentScrollLeft = container.scrollLeft; // Current scroll position
+
+        // Check if we have reached the end of the scroll
+        if (currentScrollLeft >= maxScrollLeft) {
+            // When it reaches the end, reset to start but without snapping to position
+            container.scrollLeft = 0;
+        } else {
+            // Continue scrolling to the right
+            container.scrollBy({ left: 300, behavior: 'smooth' });
+        }
+    }
+
+    // Start the auto-scroll interval
+    scrollInterval = $interval(autoScroll, 3000);
+
+    // Clear interval when the user manually scrolls to avoid auto-scroll conflicts
+    container.addEventListener('scroll', function() {
+        if (scrollInterval) {
+            $interval.cancel(scrollInterval);
+            scrollInterval = null;
+        }
+    });
+
+    // Restart the auto-scroll after 2 seconds of inactivity
+    $interval(function() {
+        if (!scrollInterval) {
+            scrollInterval = $interval(autoScroll, 3000);
+        }
+    }, 2000);
+
 
     $scope.socialLinks = [
         { icon: 'https://cdn-icons-png.flaticon.com/512/733/733547.png', alt: 'Facebook', link: '/' },

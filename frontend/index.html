@@ -101,6 +101,29 @@
         <p class="desc" ng-bind-html="about">{{ about }}</p>
     </div>
 
+    <div class="blog-section">
+        <h2 class="section-title">Headlines</h2>
+        <div class="blog-container">
+            <div class="blog-cards-wrapper">
+                <!-- Loop through the blogs -->
+                <div class="blog-card" ng-repeat="blog in blogs">
+                    <a ng-href="{{ blog.link }}">
+                        <img ng-src="{{ blog.image }}" alt="{{ blog.title }}" class="blog-banner">
+                    </a>
+                    <div class="blog-content">
+                        <a href="#" class="blog-category">{{ blog.category }}</a>
+                        <a ng-href="{{ blog.link }}">
+                            <h3 class="blog-title">{{ blog.title }}</h3>
+                        </a>
+                        <p class="blog-meta">
+                            By <cite>{{ blog.author }}</cite> / <time datetime="{{ blog.date }}">{{ blog.date }}</time>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <footer class="footer">
         <div class="footer-content">
             <div class="social-links">
