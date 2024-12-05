@@ -80,7 +80,7 @@ router.get('/verify-email', async (req, res) => {
         // Cek apakah user sudah ada di database (email sudah diverifikasi sebelumnya)
         const existingUser = await User.findOne({ email: decoded.email });
         if (existingUser) {
-            return res.status(400).json({ message: 'Email already verified or user already exists.' });
+            res.sendFile(path.join(__dirname, '../../frontend/email-verification-error.html'));
         }
 
         // Simpan user ke database
