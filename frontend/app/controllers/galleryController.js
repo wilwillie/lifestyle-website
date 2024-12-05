@@ -99,7 +99,7 @@ $scope.deleteComment = function(commentId, index) {
         { title: 'Celana Bahan', image: 'assets/images/gallery/celanabahan1.jpg', category: 'men', productType: 'bawahan', infoPage: 'informationpages/celanabahan.html' },
         { title: 'Celana Chinos', image: 'assets/images/gallery/celanachinos1.jpg', category: 'men', productType: 'bawahan', infoPage: 'informationpages/celanachinos.html' },
         { title: 'Celana Jeans', image: 'assets/images/gallery/celanajeans1.jpg', category: 'men', productType: 'bawahan', infoPage: 'informationpages/celanajeans.html' },
-        { title: 'Ikat Pinggang', image: 'assets/images/gallery/ikatpinggang1.jpg', category: 'men', productType: 'aksesoris', infoPage: 'informationpages/ikatpinngang.html' },
+        { title: 'Ikat Pinggang', image: 'assets/images/gallery/ikatpinggang1.jpg', category: 'men', productType: 'aksesoris', infoPage: 'informationpages/ikatpinggang.html' },
         { title: 'Jam Tangan', image: 'assets/images/gallery/jamtangan1.jpg', category: 'men', productType: 'aksesoris', infoPage: 'informationpages/jamtangan.html' },
         { title: 'Blouse', image: 'assets/images/gallery/blouse1.jpg', category: 'women', productType: 'atasan', infoPage: 'informationpages/blouse.html' },
         { title: 'Babytee', image: 'assets/images/gallery/babytee1.jpg', category: 'women', productType: 'atasan', infoPage: 'informationpages/babytee.html' },

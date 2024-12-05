@@ -292,6 +292,10 @@ app.controller('MainController', ['$scope', '$window', '$interval', '$document',
 
     $scope.userRating = null;
 
+    $scope.setRating = function (rating) {
+        $scope.userRating = rating;
+    };    
+
     $scope.$watch('userRating', function (newValue, oldValue) {
         console.log('Rating berubah dari:', oldValue, 'ke:', newValue);
     });
@@ -324,28 +328,6 @@ app.controller('MainController', ['$scope', '$window', '$interval', '$document',
             });
 
     };
-    
-    $scope.getRatingStatistics = function () {
-        $http.get('http://127.0.0.1:5000/ratings/statistics')
-            .then(function (response) {
-                const stats = response.data;
-                $scope.averageRating = stats.averageRating || 0;
-                $scope.totalRatings = stats.totalRatings || 0;
-    
-                console.log('Statistik Rating:', stats);
-            })
-            .catch(function (error) {
-                console.error('Error fetching rating statistics:', error);
-                alert('Gagal memuat statistik rating.');
-            });
-    };
-    
-    // Panggil fungsi statistik saat halaman dimuat
-    $scope.getRatingStatistics();
-    
-    
-    
-
 
     // Data untuk formulir
     $scope.question = {
