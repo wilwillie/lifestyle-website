@@ -694,3 +694,64 @@ body.dark-mode .social-links a:hover {
       font-size: 18px; /* Kurangi ukuran font untuk ponsel */
   }
 }
+
+.question-form-container, .login-alert {
+    margin: 20px auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #f9f9f9;
+    max-width: 500px;
+    text-align: center;
+}
+
+.question-form-container h2, .login-alert p {
+    font-size: 18px;
+    margin-bottom: 15px;
+}
+
+.form-group {
+    margin-bottom: 15px;
+    text-align: left;
+}
+
+.form-group label {
+    font-weight: bold;
+}
+
+.form-group input, .form-group textarea {
+    width: 100%;
+    padding: 10px;
+    margin-top: 5px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}
+
+.send-button, .login-button {
+    padding: 10px 15px;
+    background-color: #007bff;
+    border: none;
+    color: white;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.send-button:hover, .login-button:hover {
+    background-color: #0056b3;
+}
+
+#rating-statistics {
+  display: flex;
+  gap: 5px;
+  font-size: 24px;
+}
+
+.star {
+  color: lightgray; /* Warna bintang kosong */
+}
+
+.star.filled {
+  color: gold; /* Warna bintang terisi */
+}
+
+

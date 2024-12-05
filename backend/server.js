@@ -6,7 +6,8 @@ const mongoose = require('mongoose');
 const authRoutes = require('./routes/auth');
 const Comment = require('./models/Comment');
 const User = require('./models/User'); // Pastikan Anda mengimpor model User
-
+const Question = require('./models/Question');
+const Rating = require('./models/Rating');
 dotenv.config();
 
 // Koneksi ke database MongoDB
@@ -26,7 +27,8 @@ app.use(cors({
     methods: ['GET', 'POST', 'PUT', 'DELETE']
 }));
 app.use(bodyParser.json());
-
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use(express.json());
 // Menyajikan file statis dari folder 'assets'
 app.use('/assets', express.static('assets'));
 
@@ -42,6 +44,75 @@ app.get('/comments', async (req, res) => {
         res.status(500).json({ message: 'Error fetching comments.' });
     }
 });
+
+app.post('/questions', async (req, res) => {
+
+    console.log('Request received:', req.body);
+
+    try {
+        const { email, question } = req.body;
+
+        // Validasi sederhana
+        if (!email || !question) {
+            return res.status(400).json({ message: 'Email dan pertanyaan wajib diisi.' });
+        }
+
+        // Simpan ke MongoDB
+        const newQuestion = new Question({ email, question });
+        await newQuestion.save();
+
+        res.status(201).json({ message: 'Pertanyaan berhasil dikirim.' });
+    } catch (error) {
+        console.error('Error saving question:', error);
+        res.status(500).json({ message: 'Terjadi kesalahan saat menyimpan pertanyaan.' });
+    }
+});
+
+app.get('/ratings', async (req, res) => {
+    try {
+        const stats = await Rating.aggregate([
+            {
+                $group: {
+                    _id: null,
+                    averageRating: { $avg: '$rating' },
+                    totalRatings: { $sum: 1 }
+                }
+            }
+        ]);
+
+        res.json(stats[0] || { averageRating: 0, totalRatings: 0 });
+    } catch (error) {
+        console.error('Error fetching rating statistics:', error);
+        res.status(500).json({ message: 'Terjadi kesalahan.' });
+    }
+});
+
+app.post('/ratings', (req, res) => {
+    const { rating, email } = req.body;
+
+    if (typeof rating !== 'number' || rating < 1 || rating > 5) {
+        return res.status(400).json({ message: 'Rating harus berupa angka antara 1 dan 5.' });
+    }
+
+    // Membuat dan menyimpan rating baru
+    const newRating = new Rating({
+        email: email,
+        rating: rating
+    });
+
+    // Simpan ke database
+    newRating.save()
+        .then(() => {
+            console.log('Rating berhasil disimpan');
+            res.status(200).json({ message: 'Rating berhasil disimpan.' });
+        })
+        .catch((error) => {
+            console.error('Gagal menyimpan rating:', error);
+            res.status(500).json({ message: 'Terjadi kesalahan saat menyimpan rating.' });
+        });
+});
+
+
 
 
 app.post('/comments', async (req, res) => {
@@ -136,7 +207,6 @@ app.delete('/comments/:id', async (req, res) => {
         res.status(500).json({ message: 'Error deleting comment.' });
     }
 });
-
 
 
 

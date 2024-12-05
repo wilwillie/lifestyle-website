@@ -1,4 +1,4 @@
-app.controller('MainController', ['$scope', '$window', '$interval', '$document', function ($scope, $window, $interval, $document) {
+app.controller('MainController', ['$scope', '$window', '$interval', '$document', '$http', function ($scope, $window, $interval, $document, $http) {
     $scope.isLoggedIn = false; // Default: user belum login
     $scope.username = 'Guest'; // Default username jika belum login
     $scope.userIcon = 'assets/images/default-profile.jpg'; // Pastikan path benar
@@ -233,6 +233,125 @@ app.controller('MainController', ['$scope', '$window', '$interval', '$document',
         }
     }, 2000);
 
+    $scope.userRating = null;
+
+    $scope.$watch('userRating', function (newValue, oldValue) {
+        console.log('Rating berubah dari:', oldValue, 'ke:', newValue);
+    });
+    $scope.onRatingChange = function () {
+        console.log('Rating berubah ke:', $scope.userRating);
+    };
+    
+    $scope.submitRating = function () {
+        if (!$scope.userRating) {
+            alert('Silakan pilih rating terlebih dahulu.');
+            return;
+        }
+    
+        // Buat payload data
+        const payload = {
+            email: $scope.username || 'user@example.com', // Ganti dengan email aktual jika ada
+            rating: parseInt($scope.userRating, 10) // Pastikan rating adalah angka
+        };
+    
+        console.log('Payload dikirim:', payload);
+    
+        $http.post('http://127.0.0.1:5000/ratings', payload)
+            .then(function (response) {
+                console.log('Response dari server:', response.data);
+                alert('Rating berhasil dikirim!');
+            })
+            .catch(function (error) {
+                console.error('Error submitting rating:', error);
+                alert(error.data.message || 'Terjadi kesalahan. Silakan coba lagi.');
+            });
+
+    };
+    
+    $scope.getRatingStatistics = function () {
+        $http.get('http://127.0.0.1:5000/ratings/statistics')
+            .then(function (response) {
+                const stats = response.data;
+                $scope.averageRating = stats.averageRating || 0;
+                $scope.totalRatings = stats.totalRatings || 0;
+    
+                console.log('Statistik Rating:', stats);
+            })
+            .catch(function (error) {
+                console.error('Error fetching rating statistics:', error);
+                alert('Gagal memuat statistik rating.');
+            });
+    };
+    
+    // Panggil fungsi statistik saat halaman dimuat
+    $scope.getRatingStatistics();
+    
+    
+    
+
+
+    // Data untuk formulir
+    $scope.question = {
+        email: '',
+        text: ''
+    };    
+
+    // Fungsi untuk memeriksa login sebelum menampilkan formulir
+    $scope.checkLoginForQuestion = function () {
+        if (!$scope.isLoggedIn) {
+            alert('Silakan login terlebih dahulu untuk mengirimkan pertanyaan.');
+            return false;
+        }
+        return true;
+    };
+
+    // Periksa status login dan isi email untuk pertanyaan
+    $scope.checkLoginStatus = function () {
+        const user = JSON.parse(localStorage.getItem('user')); // Ambil data user dari localStorage
+        if (user && user.username) {
+            $scope.isLoggedIn = true; // Tandai user sebagai login
+            $scope.username = user.username; // Simpan email user sebagai username
+            $scope.question.email = user.username; // Isi email ke dalam question
+        } else {
+            $scope.isLoggedIn = false; // Tandai user sebagai tidak login
+            $scope.username = ''; // Kosongkan username
+            $scope.question.email = ''; // Kosongkan email
+        }
+    };
+
+    // Panggil fungsi checkLoginStatus saat controller diinisialisasi
+    $scope.checkLoginStatus();
+
+
+    // Fungsi untuk mengirimkan pertanyaan
+    $scope.submitQuestion = function () {
+        console.log('submitQuestion dipanggil');
+        console.log('Email:', $scope.question.email);
+        console.log('Pertanyaan:', $scope.question.text);
+
+        if (!$scope.isLoggedIn) {
+            alert('Silakan login terlebih dahulu untuk mengirimkan pertanyaan.');
+            return;
+        }
+        if (!$scope.question.text.trim()) {
+            alert('Pertanyaan tidak boleh kosong.');
+            return;
+        }
+
+        // Kirim data ke backend menggunakan $http
+        $http.post('http://127.0.0.1:5000/questions', { 
+            email: $scope.question.email,
+            question: $scope.question.text
+        }).then(function (response) {
+            $scope.question.text = ''; // Reset formulir
+            alert('Pertanyaan berhasil dikirim. Kami akan membalasnya melalui email!');
+        }).catch(function (error) {
+            console.error('Error submitting question:', error);
+            alert('Terjadi kesalahan. Silakan coba lagi.');
+        });
+    };
+    
+    
 
     $scope.socialLinks = [
         { icon: 'https://cdn-icons-png.flaticon.com/512/733/733547.png', alt: 'Facebook', link: '/' },
