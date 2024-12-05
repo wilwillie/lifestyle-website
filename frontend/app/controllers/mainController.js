@@ -148,53 +148,110 @@ app.controller('MainController', ['$scope', '$window', '$interval', '$document',
 
     $scope.blogs = [
         {
-            title: 'Clothes Retail KPIs 2021 Guide for Clothes Executives.',
+            title: 'Fashion trends according to seasons',
             category: 'Fashion',
-            image: 'assets/images/flannel.jpg',
-            link: '#',
+            image: 'assets/images/blogs/article1.jpg',
+            link: 'https://www.whowhatwear.com/fashion/trends',
             date: 'Apr 06, 2022',
-            author: 'Mr Admin'
+            author: 'who what wear'
         },
         {
-            title: 'Curbside fashion Trends: How to Win the Pickup Battle.',
-            category: 'Clothes',
-            image: 'assets/images/flannel.jpg',
-            link: '#',
+            title: 'Fall & Winter fashion trends',
+            category: 'Fashion',
+            image: 'assets/images/blogs/article2.jpg',
+            link: 'https://www.glamour.com/story/2024-fashion-trends',
             date: 'Jan 18, 2022',
-            author: 'Mr Robin'
+            author: 'glamour'
         },
         {
-            title: 'EBT vendors: Claim Your Share of SNAP Online Revenue.',
-            category: 'Shoes',
-            image: 'assets/images/flannel.jpg',
-            link: '#',
+            title: 'The importance of personal style',
+            category: 'Fashion',
+            image: 'assets/images/blogs/article3.jpg',
+            link: 'https://www.elysestyled.com/blog/what-is-personal-style',
             date: 'Feb 10, 2022',
-            author: 'Mr Selsa'
+            author: 'elysestyled'
         },
         {
-            title: 'Curbside fashion Trends: How to Win the Pickup Battle.',
-            category: 'Electronics',
-            image: 'assets/images/flannel.jpg',
-            link: '#',
-            date: 'Mar 15, 2022',
-            author: 'Mr Pawar'
+            title: 'How to Define Your Personal Style',
+            category: 'Fashion',
+            image: 'assets/images/blogs/article4.jpg',
+            link: 'https://www.refinery29.com/en-us/how-to-define-your-style',
+            date: 'Mar 01, 2022',
+            author: 'Refinery29'
         },
         {
-            title: 'Curbside fashion Trends: How to Win the Pickup Battle.',
-            category: 'Electronics',
-            image: 'assets/images/flannel.jpg',
-            link: '#',
+            title: '2024 Color Trends in Fashion',
+            category: 'Fashion',
+            image: 'assets/images/blogs/article5.jpg',
+            link: 'https://www.pantone.com/articles/fashion-color-trends',
             date: 'Mar 15, 2022',
-            author: 'Mr Pawar'
+            author: 'Pantone'
         },
         {
-            title: 'Curbside fashion Trends: How to Win the Pickup Battle.',
-            category: 'Electronics',
-            image: 'assets/images/flannel.jpg',
-            link: '#',
-            date: 'Mar 15, 2022',
-            author: 'Mr Pawar'
+            title: 'Minimalist Wardrobe: Essentials You Need',
+            category: 'Fashion',
+            image: 'assets/images/blogs/article6.jpg',
+            link: 'https://www.theminimalistwardrobe.com/blog/minimalist-essentials',
+            date: 'Apr 10, 2022',
+            author: 'The Minimalist Wardrobe'
+        },
+        {
+            title: 'The Rise of Sustainable Fashion in 2024',
+            category: 'Fashion',
+            image: 'assets/images/blogs/article7.jpg',
+            link: 'https://www.thegoodtrade.com/features/sustainable-fashion',
+            date: 'May 20, 2022',
+            author: 'The Good Trade'
+        },
+        {
+            title: 'The Ultimate Guide to Capsule Wardrobes',
+            category: 'Fashion',
+            image: 'assets/images/blogs/article8.jpg',
+            link: 'https://www.becomingminimalist.com/capsule-wardrobe/',
+            date: 'Jun 05, 2022',
+            author: 'Becoming Minimalist'
+        },
+        {
+            title: 'Street Style Looks Dominating 2024',
+            category: 'Fashion',
+            image: 'assets/images/blogs/streetstyle.jpg',
+            link: 'https://www.vogue.com/article/street-style-trends',
+            date: 'Jun 18, 2022',
+            author: 'Vogue'
+        },
+        {
+            title: 'Fashion Tips for Petite Women',
+            category: 'Fashion',
+            image: 'assets/images/blogs/article9.jpg',
+            link: 'https://www.thepetiteclub.com/blog/fashion-tips-for-petite-women',
+            date: 'Jul 10, 2022',
+            author: 'The Petite Club'
+        },
+        {
+            title: 'Fashion Trends for Every Body Type',
+            category: 'Fashion',
+            image: 'assets/images/blogs/article10.jpg',
+            link: 'https://www.stitchfix.com/blog/trends/body-type-fashion-tips/',
+            date: 'Aug 02, 2022',
+            author: 'Stitch Fix'
+        },
+        {
+            title: 'History of Iconic Fashion Eras',
+            category: 'Fashion',
+            image: 'assets/images/blogs/article11.jpg',
+            link: 'https://www.fashiongonerogue.com/history-iconic-fashion-eras/',
+            date: 'Sep 12, 2022',
+            author: 'Fashion Gone Rogue'
+        },
+        {
+            title: 'Wardrobe Essentials for the Modern Man',
+            category: 'Fashion',
+            image: 'assets/images/blogs/article12.jpg',
+            link: 'https://www.mrporter.com/en-us/journal/fashion/wardrobe-essentials-modern-man-2024',
+            date: 'Oct 05, 2022',
+            author: 'Mr Porter'
         }
+        
     ];
 
     const container = document.querySelector('.blog-cards-wrapper');
