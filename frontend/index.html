@@ -123,48 +123,41 @@
             </div>
         </div>
     </div>
-
-    <div id="question-form-container" class="question-form-container" ng-if="isLoggedIn">
-        <h2>Ajukan Pertanyaan Anda</h2>
-        <form name="questionForm" ng-submit="submitQuestion()">
-            <div class="form-group">
-                <label for="email">Email Anda:</label>
-                <input type="email" id="email" ng-model="question.email" placeholder="Masukkan email Anda" required>
-            </div>
-            <div class="form-group">
-                <label for="question">Pertanyaan Anda:</label>
-                <textarea id="question" ng-model="question.text" placeholder="Tulis pertanyaan Anda..." required></textarea>
-            </div>
-            <button type="submit" class="send-button">Kirim Pertanyaan</button>
-        </form>        
-    </div>
     
-    <!-- Alert untuk user yang belum login -->
-    <div id="question-login-alert" class="login-alert" ng-if="!isLoggedIn">
-        <p>Harap login terlebih dahulu untuk mengajukan pertanyaan.</p>
-        <a href="login.html"><button class="login-button">Login Sekarang</button></a>
-    </div>
-    
-    <form name="ratingForm" ng-submit="submitRating()">
-        <div class="form-group">
-            <label for="rating">Rating Anda:</label>
-            <select id="rating" ng-model="userRating" ng-options="n for n in [1, 2, 3, 4, 5]" required>
-            </select>            
+    <div class="form-section">
+        <div id="question-form-container" class="question-form-container">
+            <h2>Ajukan Pertanyaan Anda</h2>
+            <form name="questionForm" ng-submit="submitQuestion()">
+                <div class="form-group">
+                    <label for="email">Email Anda:</label>
+                    <input type="email" id="email" ng-model="question.email" placeholder="Masukkan email Anda" required>
+                </div>
+                <div class="form-group">
+                    <label for="question">Pertanyaan Anda:</label>
+                    <textarea id="question" ng-model="question.text" placeholder="Tulis pertanyaan Anda..." required></textarea>
+                </div>
+                <button type="submit" class="send-button">Kirim Pertanyaan</button>
+            </form>        
         </div>
-        <button type="submit" class="send-button">Kirim Rating</button>
-    </form>
     
-    <div id="rating-statistics">
-    <span ng-repeat="n in [1, 2, 3, 4, 5]" 
-          class="star" 
-          ng-class="{'filled': n <= averageRating}">
-        ★
-    </span>
-</div>
-
-    
-    
-    
+        <div id="rating-container" class="rating-container">
+            <h2>Rating Anda</h2>
+            <form name="ratingForm" ng-submit="submitRating()">
+                <div class="form-group">
+                    <label for="rating">Rating Anda:</label>
+                    <div class="rating-stars">
+                        <span ng-repeat="n in [1, 2, 3, 4, 5]" 
+                            class="star" 
+                            ng-class="{'filled': n <= userRating}"
+                            ng-click="setRating(n)">
+                            ★
+                        </span>
+                    </div>
+                </div>
+                <button type="submit" class="send-button">Kirim Rating</button>
+            </form>
+        </div>
+    </div>    
 
     <footer class="footer">
         <div class="footer-content">
