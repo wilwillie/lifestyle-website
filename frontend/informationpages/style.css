@@ -1,0 +1,330 @@
+:root {
+  --bg: #FFFFFF;
+  --teks: #333333;
+  --icondll: #A3D4FF;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Poppins', sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: var(--bg);
+  overflow-x: hidden;
+}
+
+/* Header Styles */
+.header {
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.15);
+  font-family: 'Poppins', serif;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 20px; /* Padding yang lebih kecil untuk semua ukuran layar */
+  color: var(--teks);
+  background-color: var(--bg);
+  width: 100%;
+  top: 0;
+  z-index: 100;
+  position: fixed; /* Tetap terlihat saat scroll */
+  height: 80px; /* Menetapkan tinggi tetap */
+  margin: 0 auto; /* Memusatkan header */
+  transition: padding 0.3s ease; /* Animasi transisi untuk perubahan padding */
+}
+
+/* Container khusus untuk logo dan dark mode toggle */
+.logo-darkmode-container {
+display: flex;
+align-items: center;
+gap: 15px; /* Jarak antara logo dan tombol */
+}
+
+/* Untuk ikon bulan dan matahari */
+.icon-moon, .icon-sun {
+cursor: pointer;
+font-size: 24px;
+}
+
+.logo a {
+text-decoration: none;
+font-size: 20px;
+font-weight: bold;
+color: var(--teks);
+}
+
+.logo a:hover {
+color: var(--icondll);
+}
+
+.dark-mode {
+background-color: var(--teks);
+}
+
+.dark-mode .header {
+color: var(--bg);
+background-color: var(--teks);
+}
+
+.dark-mode .logo a {
+color: var(--bg);
+}
+
+.dark-mode .logo a:hover {
+color: var(--icondll);
+}
+
+.dark-mode .nav ul li a {
+color: var(--bg);
+}
+
+.dark-mode .info-section {
+background-color: var(--teks);
+color: var(--bg);
+}
+
+.dark-mode .info-content h1 {
+color: var(--bg);
+}
+
+.dark-mode .info-content p {
+color: var(--bg);
+}
+
+.dark-mode .back-button {
+background-color: var(--bg);
+color: var(--teks);
+}
+
+.dark-mode .social-links a {
+color: var(--bg);
+}
+
+.dark-mode .social-links a:hover {
+color: var(--icondll);
+}
+
+.dark-mode .footer {
+color: var(--bg);
+}
+
+.nav ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  gap: 5px;
+}
+
+.nav ul li {
+  display: inline-block;
+}
+
+.nav ul li a {
+  text-decoration: none;
+  color: var(--teks);
+  font-size: 16px;
+  padding: 10px 20px;
+  transition: background 0.3s ease, padding 0.3s ease; /* Animasi transisi untuk perubahan padding */
+}
+
+.nav ul li a:hover {
+  background-color: var(--icondll);
+}
+
+@media (max-width: 768px) {
+  .header {
+    padding: 0 20px; /* Padding yang lebih kecil */
+  }
+
+  .logo a {
+    font-size: 10px;
+  }
+
+  .icon-moon, .icon-sun {
+    font-size: 14px;
+  }
+
+  .nav ul li a {
+    font-size: 10px; /* Mengurangi ukuran font */
+    padding: 8px 15px; /* Mengurangi padding */
+  }
+}
+
+.content-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  padding: 50px;
+  margin-top: 80px;
+  opacity: 0;
+  transform: translateY(40px);
+  animation: slideUp 1s forwards;
+}
+
+@keyframes slideUp {
+  to {
+      opacity: 1;
+      transform: translateY(0);
+  }
+}
+
+.info-section {
+  position: relative; /* Agar posisi tombol berada relatif terhadap info-section */
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  width: 80%;
+  background-color: var(--bg);
+  color: var(--teks);
+  padding: 30px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  border-radius: 10px;
+}
+
+.info-section img {
+  max-width: 50%;
+  height: auto;
+  border-radius: 10px;
+  object-fit: cover; /* Menjaga proporsi gambar */
+}
+
+.info-content {
+  max-width: 45%;
+  padding: 20px;
+}
+
+.info-content h1 {
+  font-size: 2.5rem;
+  color: var(--teks);
+}
+
+.info-content p {
+  font-size: 1.2rem;
+  color: var(--teks);
+  line-height: 1.6;
+}
+
+.info-content ul {
+  padding-left: 20px;
+}
+
+.info-content ul li {
+  font-size: 1.1rem;
+  margin-bottom: 10px;
+}
+
+/* Responsiveness */
+@media screen and (max-width: 992px) {
+  .info-section {
+      flex-direction: column;
+      align-items: center;
+      text-align: left;
+  }
+
+  .info-section img {
+      max-width: 100%;
+      margin-bottom: 20px;
+  }
+
+  .info-content {
+      max-width: 100%;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .info-content h1 {
+      font-size: 2rem;
+  }
+
+  .info-content p, .info-content ul li {
+      font-size: 1rem;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .content-wrapper {
+      padding: 20px;
+  }
+
+  .info-section {
+      width: 100%;
+  }
+
+  .info-content h1 {
+      font-size: 1.8rem;
+  }
+
+  .info-content p, .info-content ul li {
+      font-size: 0.9rem;
+  }
+}
+
+.back-button {
+  position: absolute; /* Agar dapat diposisikan relatif terhadap parent */
+  bottom: 20px; /* Jarak dari bawah kontainer */
+  left: 20px; /* Jarak dari kiri kontainer */
+  padding: 10px 20px;
+  background-color: var(--teks);
+  color: var(--bg);
+  border: none;
+  border-radius: 5px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.back-button:hover {
+  background-color: var(--icondll); /* Warna saat hover */
+}
+
+/* Footer Styles */
+.footer {
+  font-family: 'Poppins', serif;
+  background: transparent;
+  color: var(--teks);
+  text-align: center;
+  padding: 20px 0;
+  position: relative;
+  width: 100%;
+}
+
+.footer-content {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.footer-content p {
+  margin: 0;
+  font-size: 14px;
+}
+
+.social-links {
+  margin: 10px;
+}
+
+.social-links a {
+  color: var(--teks);
+  text-decoration: none;
+  margin: 0 10px;
+  font-size: 20px; /* Ukuran ikon */
+  transition: color 0.3s ease;
+}
+
+.social-links a:hover {
+  color: var(--icondll);
+}
+
+/* Responsif untuk layar kecil */
+@media (max-width: 768px) {
+  .footer-content p {
+      font-size: 12px;
+  }
+  
+  .social-links a {
+      font-size: 18px; /* Ukuran ikon untuk layar kecil */
+  }
+}

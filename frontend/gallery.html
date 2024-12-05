@@ -309,26 +309,28 @@
         </div>        
 
         <!-- Men's Gallery Section -->
-        <div id="men" class="product-section" id="men-section" ng-if="isMenCategoryVisible && filteredItems.length > 0">
-            <h2>Men's Fashion</h2>
-            <div class="product-list">
-                <div class="item" ng-repeat="item in filteredItems" ng-if="item.category === 'men' && isVisible(item)">
-                    <img ng-src="{{ item.image }}" alt="{{ item.title }}">
-                    <p class="title">{{ item.title }}</p>
-                </div>
-            </div>
+<!-- Men's Gallery Section -->
+<div id="men" class="product-section" id="men-section" ng-if="isMenCategoryVisible && filteredItems.length > 0">
+    <h2>Men's Fashion</h2>
+    <div class="product-list">
+        <div class="item" ng-repeat="item in filteredItems" ng-if="item.category === 'men' && isVisible(item)" ng-click="goToProductPage(item.infoPage)">
+            <img ng-src="{{ item.image }}" alt="{{ item.title }}">
+            <p class="title">{{ item.title }}</p>
         </div>
+    </div>
+</div>
 
-        <!-- Women's Gallery Section -->
-        <div id="women" class="product-section" id="women-section" ng-if="isWomenCategoryVisible && filteredItems.length > 0">
-            <h2>Women's Fashion</h2>
-            <div class="product-list">
-                <div class="item" ng-repeat="item in filteredItems" ng-if="item.category === 'women' && isVisible(item)">
-                    <img ng-src="{{ item.image }}" alt="{{ item.title }}">
-                    <p class="title">{{ item.title }}</p>
-                </div>
-            </div>
+<!-- Women's Gallery Section -->
+<div id="women" class="product-section" id="women-section" ng-if="isWomenCategoryVisible && filteredItems.length > 0">
+    <h2>Women's Fashion</h2>
+    <div class="product-list">
+        <div class="item" ng-repeat="item in filteredItems" ng-if="item.category === 'women' && isVisible(item)" ng-click="goToProductPage(item.infoPage)">
+            <img ng-src="{{ item.image }}" alt="{{ item.title }}">
+            <p class="title">{{ item.title }}</p>
         </div>
+    </div>
+</div>
+
     </div>
 
     <!-- Komentar -->
