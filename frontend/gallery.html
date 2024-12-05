@@ -3,215 +3,227 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Image Filter Gallery</title>
+    <title>FashionPedia</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
-        * {
+        body {
+            font-family: Arial, sans-serif;
             margin: 0;
-            padding: 0;
-            box-sizing: border-box;
+            padding: 20px;
+            background-color: #f9f9f9;
         }
 
-        body {
-            font-family: 'Arial', sans-serif;
-            background-color: #f4f4f4;
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
             display: flex;
             flex-direction: column;
-            align-items: center;
-            padding-top: 40px;
         }
 
         h2 {
-            text-align: center;
-            margin: 30px 0;
-            font-size: 32px;
-            font-weight: 600;
-            color: #333;
+            margin-bottom: 20px;
+        }
+        .gallery h2 {
+    text-align: center;  /* Menyusun teks di tengah secara horizontal */
+    margin-bottom: 20px;
+}
+
+
+        /* Galeri */
+        .gallery {
+            margin-bottom: 40px;
         }
 
-        /* Container utama untuk filter, search, dan gallery */
-        .main-container {
+        .gallery .filters {
+    display: flex;
+    justify-content: center;  /* Menyusun elemen secara horizontal di tengah */
+    align-items: center;      /* Menyusun elemen secara vertikal di tengah */
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.gallery .filters input,
+.gallery .filters select,
+.gallery .filters button {
+    margin: 0 5px;  /* Menambahkan jarak antar elemen */
+}
+
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 15px;
+        }
+
+        .gallery-item {
             display: flex;
             flex-direction: column;
             align-items: center;
-            width: 100%;
-            max-width: 1200px; /* Maksimal lebar container */
-            margin: 0 auto;
-        }
-
-        /* Filter Container */
-        .filter-container {
-            display: flex;
-            justify-content: space-between;
-            gap: 20px;
-            margin-bottom: 30px;
-            width: 100%;
-            max-width: 1200px;
-            padding: 0 20px;
-        }
-
-        .filter-container div {
-            flex: 1;
-            max-width: 300px;
-        }
-
-        select, input {
-            padding: 12px;
-            font-size: 16px;
+            background-color: #fff;
             border: 1px solid #ccc;
-            border-radius: 5px;
-            width: 100%;
-            box-sizing: border-box;
+            border-radius: 8px;
+            padding: 10px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
         }
+        .gallery-item img {
+    width: 100%;
+    height: 200px; /* Tetapkan tinggi tetap */
+    object-fit: cover; /* Mengatur gambar agar memenuhi dimensi tanpa merusak proporsi */
+    border-radius: 8px;
+    margin-bottom: 10px;
+}
 
-        /* Gallery Layout - Grid */
-        .product-list {
-            display: grid; /* Grid untuk menampilkan produk */
-            gap: 20px; /* Jarak antar item */
-            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); /* Responsif dan auto-fill */
-            padding: 20px;
-            width: 100%;
-            max-width: 1200px; /* Maksimal lebar gallery */
-            margin-top: 30px;
-        }
-
-        /* Item Styling */
-        .item {
-            background-color: #fff;
-            border-radius: 10px;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
-            overflow: hidden;
-            transition: transform 0.3s ease-in-out;
-        }
-
-        .item:hover {
-            transform: translateY(-10px);
-        }
-
-        .item img {
-            width: 100%;
-            height: 250px; /* Sesuaikan ukuran gambar */
-            object-fit: cover;
-            object-position: center;
-            transition: opacity 0.3s ease;
-        }
-
-        .item:hover img {
-            opacity: 0.8;
-        }
-
-        .item .title {
-            padding: 15px;
+        .gallery-item p {
+            margin: 0;
             text-align: center;
-            font-size: 18px;
-            font-weight: 600;
-            color: #333;
-            background-color: #fff;
-            border-top: 1px solid #ddd;
-            transition: color 0.3s ease;
         }
 
-        .item:hover .title {
-            color: #007bff;
-        }
+        /* Komentar */
+/* Container untuk komentar */
+.comments-container {
+    display: flex;
+    justify-content: center; /* Menempatkan kontainer di tengah secara horizontal */
+    margin-top: 40px;
+}
 
-        /* Men and Women Product Section */
-        .product-section {
-            width: 100%;
-            margin-bottom: 50px;
-        }
+/* Komentar */
+.comments {
+    max-width: 600px; /* Membatasi lebar kontainer komentar */
+    width: 100%;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
 
-        .product-section h2 {
-            margin-bottom: 20px;
-            font-size: 28px;
-            font-weight: 600;
-            text-align: left;
-            color: #333;
-        }
+/* Judul Comments di tengah */
+.comments h2 {
+    text-align: center;
+    margin-bottom: 20px;
+}
 
-        /* Responsive Design */
-        @media (max-width: 768px) {
-            .filter-container {
-                flex-direction: column;
-                align-items: center;
-            }
+/* Styling lainnya tetap sama */
+.comments textarea {
+    width: 100%;
+    height: 60px;
+    margin-bottom: 10px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
 
-            .product-list {
-                grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); /* Lebih kecil pada perangkat mobile */
-            }
-        }
+.comments button {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    border: none;
+    border-radius: 4px;
+    background-color: #007BFF;
+    color: white;
+    cursor: pointer;
+}
 
-        .no-filter-message {
-            color: #f00;  /* Warna merah untuk memberi perhatian */
-            font-size: 16px;
-            font-weight: bold;
-            text-align: center;
-            margin-top: 20px;
-        }
+.comments button:hover {
+    background-color: #0056b3;
+}
+
+.comment-item {
+    display: flex;
+    align-items: flex-start;
+    margin-bottom: 10px;
+}
+
+.comment-item img {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    margin-right: 10px;
+}
+
+.comment-item p {
+    margin: 0;
+    flex: 1;
+}
+
+.comment-item strong {
+    display: block;
+    margin-bottom: 5px;
+}
+
+.comment-item button {
+    width: 60px;
+    margin-left: 8px;
+    height: 30px;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .comments-container {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .comments {
+        width: 100%;
+    }
+}
+
     </style>
 </head>
-<body ng-controller="GalleryController">
-    <!-- Main container -->
-    <div class="main-container">
-        <!-- Filter Section -->
-        <div class="filter-container">
-            <!-- Filter by Category -->
-            <div class="filter-category">
-                <label for="filter-category">Filter by Category:</label>
-                <select id="filter-category" ng-model="selectedCategory" ng-change="filterImages()">
-                    <option value="">All Categories</option>
-                    <option value="men">Men</option>
-                    <option value="women">Women</option>
+<body ng-controller="galleryController">
+    <div class="container">
+        <!-- Galeri Produk -->
+        <div class="gallery">
+            <h2>Gallery</h2>
+            <div class="filters">
+                <input type="text" ng-model="searchQuery" placeholder="Search product title" />
+                <select ng-model="selectedCategory" ng-options="category for category in ['men', 'women']">
+                    <option value="">Select Category</option>
                 </select>
+                <select ng-model="selectedProduct" ng-options="product for product in productTypes">
+                    <option value="">Select Product Type</option>
+                </select>
+                <button ng-click="filterImages()">Apply Filters</button>
             </div>
 
-            <!-- Filter by Product Type -->
-            <div class="filter-product">
-                <label for="filter-product">Filter by Product Type:</label>
-                <select id="filter-product" ng-model="selectedProduct" ng-change="filterImages()">
-                    <option value="">All Products</option>
-                    <option value="atasan">Atasan</option>
-                    <option value="bawahan">Bawahan</option>
-                    <option value="aksesoris">Aksesoris</option>
-                    <option ng-repeat="type in productTypes" value="{{type}}">{{type | capitalize}}</option>
-                </select>                
-            </div>
-
-            <!-- Search Section -->
-            <div class="search-container">
-                <label for="search-input">Search by Title:</label>
-                <input type="text" id="search-input" ng-model="searchQuery" ng-change="filterImages()" placeholder="Search products by title">
-            </div>
-        </div>
-
-        <div ng-if="filteredItems.length === 0 && noFilterMessage === ''">
-            <p>Produk tidak ada.</p>
-        </div>        
-
-        <!-- Men's Gallery Section -->
-        <div id="men" class="product-section" id="men-section" ng-if="isMenCategoryVisible && filteredItems.length > 0">
-            <h2>Men's Fashion</h2>
-            <div class="product-list">
-                <div class="item" ng-repeat="item in filteredItems" ng-if="item.category === 'men' && isVisible(item)">
-                    <img ng-src="{{ item.image }}" alt="{{ item.title }}">
-                    <p class="title">{{ item.title }}</p>
+            <div class="gallery-grid">
+                <div class="gallery-item" ng-repeat="item in filteredItems">
+                    <img ng-src="{{item.image}}" alt="{{item.title}}">
+                    <p>{{item.title}} - {{item.category}} - {{item.productType}}</p>
                 </div>
             </div>
+
+            <p ng-if="filteredItems.length === 0">No items match your filters.</p>
         </div>
 
-        <!-- Women's Gallery Section -->
-        <div id="women" class="product-section" id="women-section" ng-if="isWomenCategoryVisible && filteredItems.length > 0">
-            <h2>Women's Fashion</h2>
-            <div class="product-list">
-                <div class="item" ng-repeat="item in filteredItems" ng-if="item.category === 'women' && isVisible(item)">
-                    <img ng-src="{{ item.image }}" alt="{{ item.title }}">
-                    <p class="title">{{ item.title }}</p>
-                </div>
-            </div>
+        <!-- Komentar -->
+<!-- Komentar -->
+<div class="comments-container">
+    <div class="comments">
+        <h2>Comments</h2>
+        <textarea ng-model="userComment" placeholder="Add a comment"></textarea>
+        <button ng-click="saveComment()">Submit</button>
+
+        <div class="comment-item" ng-repeat="comment in comments">
+            <img ng-src="{{comment.icon}}" alt="{{comment.username}}">
+            <p><strong>{{comment.username}}</strong>{{comment.comment}}</p>
+
+            <!-- Edit Button -->
+            <button ng-click="editComment(comment)">Edit</button>
+
+            <!-- Delete Button -->
+            <button ng-click="deleteComment(comment._id, $index)">Delete</button>
         </div>
+
+        <p ng-if="comments.length === 0">No comments yet. Be the first to comment!</p>
+    </div>
+</div>
+
     </div>
 
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular-sanitize.js"></script>
     <script src="app/app.js"></script>
     <script src="app/controllers/galleryController.js"></script>
 </body>
