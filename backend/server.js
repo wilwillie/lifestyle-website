@@ -8,6 +8,8 @@ const Comment = require('./models/Comment');
 const User = require('./models/User'); // Pastikan Anda mengimpor model User
 const Question = require('./models/Question');
 const Rating = require('./models/Rating');
+const path = require('path');
+
 dotenv.config();
 
 // Koneksi ke database MongoDB
@@ -29,6 +31,9 @@ app.use(cors({
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.json());
+app.use('/frontend', express.static(path.join(__dirname, '../frontend')));
+app.use('/assets', express.static(path.join(__dirname, '../frontend/assets')));
+
 // Menyajikan file statis dari folder 'assets'
 app.use('/assets', express.static('assets'));
 

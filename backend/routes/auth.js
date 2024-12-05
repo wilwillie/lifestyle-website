@@ -3,6 +3,7 @@ const jwt = require('jsonwebtoken');
 const User = require('../models/User');
 const { sendVerificationEmail, sendEmail } = require('../utils/email');
 const router = express.Router();
+const path = require('path');
 
 // Register
 router.post('/signup', async (req, res) => {
@@ -91,12 +92,16 @@ router.get('/verify-email', async (req, res) => {
         });
         await newUser.save();
 
-        res.status(200).json({ message: 'Email verified successfully. You can now log in.' });
+        // Kirim halaman HTML
+        res.sendFile(path.join(__dirname, '../../frontend/email-verification.html'));
     } catch (err) {
         console.error('Error verifying email:', err.message);
-        res.status(400).json({ message: 'Invalid or expired token.' });
+
+        // Kirim halaman error atau JSON
+        res.sendFile(path.join(__dirname, '../../frontend/email-verification-error.html'));
     }
 });
+
 
 // Check Username Availability
 router.get('/check-username', async (req, res) => {
